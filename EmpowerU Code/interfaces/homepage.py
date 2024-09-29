@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from app.User import User
+from interfaces.subject_selection import Selection
 
 class HomePage(tk.Frame):
 
@@ -36,7 +37,7 @@ class HomePage(tk.Frame):
 
         # Alert variable and label widget - displays alert messages where necessary
         self.alert_var = tk.StringVar(master=self)
-        self.alert_label = tk.Label(master=self, textvariable=self.alert_var)
+        self.alert_label = tk.Label(master=self, textvariable=self.alert_var,fg="red")
         self.alert_label.grid(row=4, columnspan=2, padx=10, pady=10)
 
         # Button to login
@@ -50,7 +51,18 @@ class HomePage(tk.Frame):
     def login(self):
         user_login = User.authenticate(self.username_var.get(), self.password_var.get())
         #TODO (Add the menu to display the selections of Python, AI, and Info Security)
+        if isinstance(user_login,User):
+            self.master.hide_homepage()
+            self.selection = Selection(master=self.master,\
+                                       image_path_1="./images/Python Logo.png",\
+                                       image_path_2="./images/Information Security logo.png",\
+                                       image_path_3="./images/AI Logo.png")
+            self.selection.selection_show()
+        else:   
+            self.alert_var.set("Login is unsucessful.")
 
         self.username_entry.delete(0,tk.END)
         self.password_entry.delete(0,tk.END)
         
+if __name__ == "__main__":
+    pass
