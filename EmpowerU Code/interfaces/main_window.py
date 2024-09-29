@@ -4,15 +4,7 @@ from interfaces.homepage import HomePage
 
 class MW(tk.Tk):
     
-    def __init__(self, title, width, height):
-        """
-        Constructor for the MSMS class.
-
-        Parameter(s):
-        - title: str
-        - width: int, width of window in pixels
-        - height: int, height of window in pixels
-        """
+    def __init__(self, title, width, height):   
         super().__init__()
         super().title(title)
         super().geometry(f"{width}x{height}")
@@ -25,3 +17,6 @@ class MW(tk.Tk):
 
     def hide_homepage(self):
         self.homepage.place_forget()
+
+if __name__ == "__main__":
+    pass
