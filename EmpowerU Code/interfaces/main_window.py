@@ -8,8 +8,9 @@ class MW(tk.Tk):
         super().__init__()
         super().title(title)
         super().geometry(f"{width}x{height}")
+        super().iconphoto(True,tk.PhotoImage(file="./images/EmpowerU Icon.png"))
 
-        self.homepage = HomePage(master=self, image_path="./images/EmpowerU logo.png")
+        self.homepage = HomePage(master=self, image_path="./images/EmpowerU Logo (2).png")
         self.show_homepage()
 
     def show_homepage(self):
