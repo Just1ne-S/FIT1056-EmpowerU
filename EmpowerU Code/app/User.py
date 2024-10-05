@@ -1,16 +1,15 @@
 import os
 class User():
     @staticmethod
-    def authenticate(input_username,input_password):
-        path = "./data/login_info.txt"
+    def authenticate(input_username,input_password,path):
         delimiter = ","
         if os.path.exists(path):
             with open(path,"r") as rp:
                 lines = rp.readlines()
             for line in lines:
                 first_name,last_name,contact_num,username,password = line.split(delimiter)
-            if input_username == username and input_password == password:
-                return User(first_name,last_name,username,password)
+                if input_username == username and input_password == password:
+                    return User(first_name,last_name,username,password)
             else:
                 return None
         else:
