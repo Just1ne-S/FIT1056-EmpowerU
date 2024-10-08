@@ -7,7 +7,7 @@ class User():
             with open(path,"r") as rp:
                 lines = rp.readlines()
             for line in lines:
-                user_id,first_name,last_name,contact_num,username,password = line.split(delimiter)
+                user_id,first_name,last_name,contact_num,username,password = line.strip().split(delimiter)
                 if input_username == username and input_password == password:
                     return User(user_id,first_name,last_name,username,password)
             else:
