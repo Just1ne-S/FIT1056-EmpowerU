@@ -1,5 +1,6 @@
 import tkinter as tk
 
+from app.Receptionist import Receptionist
 from app.User import User
 from interfaces.subject_selection import Selection
 
@@ -9,9 +10,11 @@ class HomePage(tk.Frame):
         super().__init__(master=master)
         self.master = master
         self.image_path = image_path
+        self.path_1 = "./data/receptionist_login_info.txt"
+        self.path_2 = "./data/user_login_info.txt"
 
         self.logo_photoimage = tk.PhotoImage(master=self, file=self.image_path)
-        self.logo_label = tk.Label(master=self, image=self.logo_photoimage, width=240, height=230)
+        self.logo_label = tk.Label(master=self, image=self.logo_photoimage, width=400, height=270)
         self.logo_label.grid(row=0, columnspan=2, sticky=tk.S, padx=10, pady=10)
 
         self.login_title = tk.Label(master=self,text="Welcome to EmpowerU",font=("Arial Bold", 20))
@@ -49,16 +52,18 @@ class HomePage(tk.Frame):
         self.shutdown_button.grid(row=6, columnspan=2, padx=10, pady=10)
 
     def login(self):
-        user_login = User.authenticate(self.username_var.get(), self.password_var.get())
-        #TODO (Add the menu to display the selections of Python, AI, and Info Security)
-        if isinstance(user_login,User):
+        receptionist_login = Receptionist.authenticate(self.username_var.get(), self.password_var.get(),self.path_1)
+        user_login = User.authenticate(self.username_var.get(), self.password_var.get(),self.path_2)
+        if isinstance(receptionist_login,Receptionist):
+            self.master.hide_homepage()
+        elif isinstance(user_login,User):   
             self.master.hide_homepage()
             self.selection = Selection(master=self.master,\
                                        image_path_1="./images/Python Logo.png",\
                                        image_path_2="./images/Information Security logo.png",\
                                        image_path_3="./images/AI Logo.png")
             self.selection.selection_show()
-        else:   
+        else:
             self.alert_var.set("Login is unsucessful.")
 
         self.username_entry.delete(0,tk.END)
