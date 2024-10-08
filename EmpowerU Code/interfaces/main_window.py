@@ -10,7 +10,7 @@ class MW(tk.Tk):
         super().geometry(f"{width}x{height}")
         super().iconphoto(True,tk.PhotoImage(file="./images/EmpowerU Icon.png"))
 
-        self.homepage = HomePage(master=self, image_path="./images/EmpowerU Logo (2).png")
+        self.homepage = HomePage(master=self, image_path="./images/EmpowerU Logo.png")
         self.show_homepage()
 
     def show_homepage(self):
