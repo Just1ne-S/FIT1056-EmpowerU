@@ -9,7 +9,7 @@ Extend the class User for the User Authentication.
 |:------|:----:|:----:|
 |Sign Up||Krishna| 
 Content Page||| 
-|Quiz||Krishna & Momina|
+|Quiz||Krishna & Mukunda|
 |Progress Tracker|Added|Justin & Afraz|
 |Badges|||
 |Dashboard|||
