@@ -4,6 +4,7 @@ from app.Receptionist import Receptionist
 from app.User import User
 from interfaces.subject_selection import Selection
 
+
 class HomePage(tk.Frame):
 
     def __init__(self,master,image_path):
@@ -47,9 +48,13 @@ class HomePage(tk.Frame):
         self.login_button = tk.Button(master=self, text="Login", command=self.login)
         self.login_button.grid(row=5, columnspan=2, padx=10, pady=10)
 
+        # Button for sign up 
+        self.signup_button = tk.Button(master=self, text="Sign Up", command=self.master.show_sign_up_page)
+        self.signup_button.grid(row=6, columnspan=2, padx=10, pady=10)
+
         # Button to shut down
         self.shutdown_button = tk.Button(master=self, text="Shut down", command=master.destroy)
-        self.shutdown_button.grid(row=6, columnspan=2, padx=10, pady=10)
+        self.shutdown_button.grid(row=7, columnspan=2, padx=10, pady=10)
 
     def login(self):
         receptionist_login = Receptionist.authenticate(self.username_var.get(), self.password_var.get(),self.path_1)
