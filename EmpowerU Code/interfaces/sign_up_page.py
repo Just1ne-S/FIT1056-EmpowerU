@@ -93,6 +93,7 @@ class SignUpPage(tk.Frame):
         else:
             self.new_user(firstname, lastname, phonenumber, username, password)
             self.alert_var.set("Username created successfully")
+            
             self.master.show_homepage()
 
     def username_taken(self, username):
