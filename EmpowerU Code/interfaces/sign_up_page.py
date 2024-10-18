@@ -92,7 +92,7 @@ class SignUpPage(tk.Frame):
         username = self.username_var.get()
         password = self.password_var.get()
         confirm_password = self.confirm_password_var.get()
-        self.assign_role()
+        lines_user,lines_receptionist,activation_code = self.assign_role()
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
             self.alert_var.set("Error! All fields must be filled in.")
@@ -111,6 +111,7 @@ class SignUpPage(tk.Frame):
         elif len(phonenumber) != 10 or phonenumber.isdigit() == False:
             self.alert_var.set("Invalid Phone number.")
         else:
+            self.code_remove(self.assign,lines_user,lines_receptionist,activation_code)
             self.new_user(firstname, lastname, phonenumber, username, password,self.assign)
             self.alert_label.config(fg="green")
             self.timer()
@@ -168,12 +169,13 @@ class SignUpPage(tk.Frame):
         lines_receptionist = [i.strip() for i in lines_receptionist]
         if activation_code in lines_user:
             self.assign = "User"
-            self.code_remove(self.assign,lines_user,lines_receptionist,activation_code)
+            return lines_user,lines_receptionist,activation_code
         elif activation_code in lines_receptionist:
             self.assign = "Receptionist"
-            self.code_remove(self.assign,lines_user,lines_receptionist,activation_code)
+            return lines_user,lines_receptionist,activation_code
         else:
             self.assign = None
+            return None
 
     def code_remove(self,role,user_line,recep_line,code):
         if role == "User":
