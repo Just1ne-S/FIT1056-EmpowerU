@@ -6,6 +6,7 @@ class SignUpPage(tk.Frame):
         super().__init__(master=master)
         self.master = master 
         self.path = path 
+        self.constant = 3
 
         # sign up title 
         self.signup_label = tk.Label(master=self, text="Sign Up", font=("Arial Bold", 20))
@@ -56,23 +57,32 @@ class SignUpPage(tk.Frame):
         self.confirm_password_label = tk.Label(master=self, text="Confirm Password:")
         self.confirm_password_label.grid(row=7, column=0, padx=10, pady=10, sticky=tk.E)
 
-        # confirm Password variable and entry widget
+        # Confirm Password variable and entry widget
         self.confirm_password_var = tk.StringVar(master=self)
         self.confirm_password_entry = tk.Entry(master=self, textvariable=self.confirm_password_var, show="●")
         self.confirm_password_entry.grid(row=7, column=1, padx=10, pady=10, sticky=tk.W)
 
+        # Activation code label
+        self.activate_label = tk.Label(master=self,text="Activation Code:")
+        self.activate_label.grid(row=8,column=0,padx=10,pady=10,sticky=tk.E)
+
+        # Activation code entry
+        self.activate_var = tk.StringVar(master=self)
+        self.activate_entry = tk.Entry(master=self,textvariable=self.activate_var)
+        self.activate_entry.grid(row=8,column=1,padx=10,pady=10,sticky=tk.W)
+
         # Alert variable and label widget - displays alert messages where necessary
         self.alert_var = tk.StringVar(master=self)
         self.alert_label = tk.Label(master=self, textvariable=self.alert_var,fg="red")
-        self.alert_label.grid(row=8, columnspan=2, padx=10, pady=10)
+        self.alert_label.grid(row=9, columnspan=2, padx=10, pady=10)
 
         # Button to sign up
         self.signup_button = tk.Button(master=self, text="Sign Up", command=self.sign_up)
-        self.signup_button.grid(row=9, columnspan=2, padx=10, pady=10)
+        self.signup_button.grid(row=10, columnspan=2, padx=10, pady=10)
 
         #Button to go home 
-        self.home_button = tk.Button(master=self, text="Home", command=self.master.show_homepage)
-        self.home_button.grid(row=20, columnspan=2, padx=10, pady=10)
+        self.home_button = tk.Button(master=self, text="Back to Sign In", command=self.master.show_homepage)
+        self.home_button.grid(row=11, columnspan=2, padx=10, pady=10)
 
     def sign_up(self):
         firstname = self.firstname_var.get()
@@ -83,33 +93,50 @@ class SignUpPage(tk.Frame):
         confirm_password = self.confirm_password_var.get()
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
-            self.alert_var.set("Error, all fields must be filled in")
+            self.alert_var.set("Error! All fields must be filled in.")
         elif password != confirm_password:
-            self.alert_var.set("Passwords do not match")
+            self.alert_var.set("Passwords do not match.")
         elif self.username_taken(username):
-            self.alert_var.set("That username is taken")
+            self.alert_var.set("That username is taken.")
         elif len(phonenumber) != 10:
-            self.alert_var.set("Invalid Phone number")
+            self.alert_var.set("Invalid Phone number.")
         else:
             self.new_user(firstname, lastname, phonenumber, username, password)
-            self.alert_var.set("Username created successfully")
-            
-            self.master.show_homepage()
-
+            self.alert_label.config(fg="green")
+            self.timer()
+        
     def username_taken(self, username):
 
         if os.path.exists(self.path):
             with open(self.path, "r") as file:
                 for line in file:
-                    enetered_usernames = line.split(",")[3]
-                    if enetered_usernames == username:
+                    entered_usernames = line.split(",")[4]
+                    if entered_usernames == username:
                         return True
         return False 
+    
+    def clear_entry(self):
+        self.firstname_entry.delete(0,tk.END)
+        self.lastname_entry.delete(0,tk.END)
+        self.phonenumber_entry.delete(0,tk.END)
+        self.username_entry.delete(0,tk.END)
+        self.password_entry.delete(0,tk.END)
+        self.confirm_password_entry.delete(0,tk.END)
+        self.alert_var.set("")
+        self.alert_label.config(fg="red")
+
+    def timer(self):
+        self.alert_var.set(f"Successful Login! Returning to Sign In page in {self.constant}.")
+        self.constant -= 1
+        if self.constant > -1:
+            self.after(1000,self.timer)
+        else:
+            self.constant = 3
+            self.clear_entry()
+            self.master.show_homepage()
         
     def new_user(self, firstname, lastname, phonenumber, username, password):
-        with open(self.path, "a") as file:
-            file.write(f"{firstname}, {lastname}, {phonenumber}, {username}, {password}")
-
-
-
-
+        with open(self.path,"r+") as file:
+            lines = file.readlines()
+            user_id = int(lines[-1][0]) + 1
+            file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password}")
