@@ -2,11 +2,12 @@ import tkinter as tk
 import os 
 
 class SignUpPage(tk.Frame):
-    def __init__(self, master, path="./data/user_login_info.txt"):
+    def __init__(self, master):
         super().__init__(master=master)
         self.master = master 
-        self.path = path 
         self.constant = 3
+        self.path_1 = "./data/user_login_info.txt"
+        self.path_2 = "./data/receptionist_login_info.txt"
 
         # sign up title 
         self.signup_label = tk.Label(master=self, text="Sign Up", font=("Arial Bold", 20))
@@ -91,29 +92,50 @@ class SignUpPage(tk.Frame):
         username = self.username_var.get()
         password = self.password_var.get()
         confirm_password = self.confirm_password_var.get()
+        self.assign_role()
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
             self.alert_var.set("Error! All fields must be filled in.")
+        elif firstname.isalpha() == False:
+            self.alert_var.set("First name must be all letters.")
+        elif lastname.isalpha() == False:
+            self.alert_var.set("Last name must be all letters.")
+        elif self.assign == None:
+            self.alert_var.set("Activation Code is Incorrect.")
         elif password != confirm_password:
             self.alert_var.set("Passwords do not match.")
-        elif self.username_taken(username):
+        elif self.username_taken(username,self.assign) == None:
+            self.alert_var.set("Make sure that the login information file exists.")
+        elif self.username_taken(username,self.assign):
             self.alert_var.set("That username is taken.")
-        elif len(phonenumber) != 10:
+        elif len(phonenumber) != 10 or phonenumber.isdigit() == False:
             self.alert_var.set("Invalid Phone number.")
         else:
-            self.new_user(firstname, lastname, phonenumber, username, password)
+            self.new_user(firstname, lastname, phonenumber, username, password,self.assign)
             self.alert_label.config(fg="green")
             self.timer()
         
-    def username_taken(self, username):
-
-        if os.path.exists(self.path):
-            with open(self.path, "r") as file:
-                for line in file:
-                    entered_usernames = line.split(",")[4]
-                    if entered_usernames == username:
-                        return True
-        return False 
+    def username_taken(self, username,role):
+        if role == "User":
+            if os.path.exists(self.path_1):
+                with open(self.path_1, "r") as file:
+                    for line in file:
+                        entered_usernames = line.split(",")[4]
+                        if entered_usernames == username:
+                            return True
+            else:
+                return None
+            return False 
+        elif role == "Receptionist":
+            if os.path.exists(self.path_2):
+                with open(self.path_2, "r") as file:
+                    for line in file:
+                        entered_usernames = line.split(",")[4]
+                        if entered_usernames == username:
+                            return True
+            else:
+                return None
+            return False 
     
     def clear_entry(self):
         self.firstname_entry.delete(0,tk.END)
@@ -122,6 +144,7 @@ class SignUpPage(tk.Frame):
         self.username_entry.delete(0,tk.END)
         self.password_entry.delete(0,tk.END)
         self.confirm_password_entry.delete(0,tk.END)
+        self.activate_entry.delete(0,tk.END)
         self.alert_var.set("")
         self.alert_label.config(fg="red")
 
@@ -135,8 +158,50 @@ class SignUpPage(tk.Frame):
             self.clear_entry()
             self.master.show_homepage()
         
-    def new_user(self, firstname, lastname, phonenumber, username, password):
-        with open(self.path,"r+") as file:
-            lines = file.readlines()
-            user_id = int(lines[-1][0]) + 1
-            file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password}")
+    def assign_role(self):
+        activation_code = self.activate_var.get()
+        activation_code_user = open("./data/activation_code_user.txt","r")
+        activation_code_receptionist = open("./data/activation_code_receptionist.txt","r")
+        lines_user = activation_code_user.readlines()
+        lines_receptionist = activation_code_receptionist.readlines()
+        lines_user = [i.strip() for i in lines_user]
+        lines_receptionist = [i.strip() for i in lines_receptionist]
+        if activation_code in lines_user:
+            self.assign = "User"
+            self.code_remove(self.assign,lines_user,lines_receptionist,activation_code)
+        elif activation_code in lines_receptionist:
+            self.assign = "Receptionist"
+            self.code_remove(self.assign,lines_user,lines_receptionist,activation_code)
+        else:
+            self.assign = None
+
+    def code_remove(self,role,user_line,recep_line,code):
+        if role == "User":
+            activation_code_user = open("./data/activation_code_user.txt","w")
+            for i in range(len(user_line)):
+                if user_line[i] == code:
+                    user_line.pop(i)
+                    for line in user_line:
+                        activation_code_user.write(f"{line}\n")
+                    break
+        elif role == "Receptionist":
+            activation_code_receptionist = open("./data/activation_code_receptionist.txt","w")
+            for i in range(len(recep_line)):
+                if recep_line[i] == code:
+                    recep_line.pop(i)
+                    for line in recep_line:
+                        activation_code_receptionist.write(f"{line}\n")
+                    break
+
+        
+    def new_user(self, firstname, lastname, phonenumber, username, password,role):
+        if role == "User":
+            with open(self.path_1,"r+") as file:
+                lines = file.readlines()
+                user_id = int(lines[-1][0]) + 1
+                file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password}")
+        elif role == "Receptionist":
+            with open(self.path_2,"r+") as file:
+                lines = file.readlines()
+                user_id = int(lines[-1][0]) + 1
+                file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password}")
