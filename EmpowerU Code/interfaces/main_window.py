@@ -2,6 +2,7 @@ import tkinter as tk
 
 from interfaces.homepage import HomePage
 from interfaces.sign_up_page import SignUpPage
+from app.adjust_lines import adjust_lines
 
 class MW(tk.Tk):
     
@@ -10,10 +11,13 @@ class MW(tk.Tk):
         super().title(title)
         super().geometry(f"{width}x{height}")
         super().iconphoto(True,tk.PhotoImage(file="./images/EmpowerU Icon.png"))
+        adjust_lines("./data/receptionist_login_info.txt")
+        adjust_lines("./data/user_login_info.txt")
+        adjust_lines("./data/activation_code_user.txt")
+        adjust_lines("./data/activation_code_receptionist.txt")
 
         self.homepage = HomePage(master=self, image_path="./images/EmpowerU Logo.png")
-        self.sign_up_page = SignUpPage(master=self, path="./data/user_login_info.txt")
-
+        self.sign_up_page = SignUpPage(master=self)
         self.show_homepage()
 
     def show_homepage(self):
