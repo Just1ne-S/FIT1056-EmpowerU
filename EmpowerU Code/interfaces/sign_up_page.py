@@ -86,12 +86,12 @@ class SignUpPage(tk.Frame):
         self.home_button.grid(row=11, columnspan=2, padx=10, pady=10)
 
     def sign_up(self):
-        firstname = self.firstname_var.get()
-        lastname = self.lastname_var.get()
-        phonenumber = self.phonenumber_var.get()
-        username = self.username_var.get()
-        password = self.password_var.get()
-        confirm_password = self.confirm_password_var.get()
+        firstname = self.firstname_var.get().strip()
+        lastname = self.lastname_var.get().strip()
+        phonenumber = self.phonenumber_var.get().strip()
+        username = self.username_var.get().strip()
+        password = self.password_var.get().strip()
+        confirm_password = self.confirm_password_var.get().strip()
         self.assign_role()
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
@@ -100,6 +100,10 @@ class SignUpPage(tk.Frame):
             self.alert_var.set("First name must be all letters.")
         elif lastname.isalpha() == False:
             self.alert_var.set("Last name must be all letters.")
+        elif " " in username:
+            self.alert_var.set("Username must not have any spaces.")
+        elif " " in password:
+            self.alert_var.set("Password must not have any spaces.")
         elif password != confirm_password:
             self.alert_var.set("Passwords do not match.")
         elif self.assign == None:
