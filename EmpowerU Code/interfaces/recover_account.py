@@ -77,12 +77,12 @@ class Recovery(tk.Frame):
 
 
     def recover_account(self):
-        firstname = self.firstname_var.get()
-        lastname = self.lastname_var.get()
-        username = self.username_var.get()
-        new_pass = self.new_pass_var.get()
-        confirm_pass = self.confirm_pass_var.get()
-        code = self.activate_var.get()
+        firstname = self.firstname_var.get().strip()
+        lastname = self.lastname_var.get().strip()
+        username = self.username_var.get().strip()
+        new_pass = self.new_pass_var.get().strip()
+        confirm_pass = self.confirm_pass_var.get().strip()
+        code = self.activate_var.get().strip()
         lines = self.assign_role(firstname,lastname,username,new_pass,code)
 
         if not firstname or not lastname or not username or not confirm_pass or not new_pass or not code:
@@ -91,6 +91,14 @@ class Recovery(tk.Frame):
             self.alert_var.set("First name must be all letters.")
         elif lastname.isalpha() == False:
             self.alert_var.set("Last name must be all letters.")
+        elif " " in firstname:
+            self.alert_var.set("First name must not have any spaces.")
+        elif " " in lastname:
+            self.alert_var.set("Last name must not have any spaces.")
+        elif " " in username:
+            self.alert_var.set("Username must not have any spaces.")
+        elif " " in new_pass:
+            self.alert_var.set("Password must not have any spaces.")
         elif new_pass != confirm_pass:
             self.alert_var.set("Passwords do not match.")
         elif self.assign == None:
@@ -160,3 +168,6 @@ class Recovery(tk.Frame):
     def forget_recover(self):
         self.place_forget()
         self.master.show_homepage()
+
+if __name__ == "__main__":
+    pass
