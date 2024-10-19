@@ -92,6 +92,7 @@ class SignUpPage(tk.Frame):
         username = self.username_var.get().strip()
         password = self.password_var.get().strip()
         confirm_password = self.confirm_password_var.get().strip()
+        self.activation_code = self.activate_var.get().strip()
         self.assign_role()
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
@@ -166,7 +167,6 @@ class SignUpPage(tk.Frame):
             self.master.show_homepage()
         
     def assign_role(self):
-        self.activation_code = self.activate_var.get()
         activation_code_user = open("./data/activation_code_user.txt","r")
         activation_code_receptionist = open("./data/activation_code_receptionist.txt","r")
         lines_user = activation_code_user.readlines()
