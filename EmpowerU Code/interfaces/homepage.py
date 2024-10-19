@@ -3,6 +3,7 @@ import tkinter as tk
 from app.Receptionist import Receptionist
 from app.User import User
 from interfaces.subject_selection import Selection
+from interfaces.recover_account import Recovery
 
 
 class HomePage(tk.Frame):
@@ -52,9 +53,13 @@ class HomePage(tk.Frame):
         self.signup_button = tk.Button(master=self, text="Sign Up", command=self.master.show_sign_up_page)
         self.signup_button.grid(row=6, columnspan=2, padx=10, pady=10)
 
+        # Button to recover account
+        self.recover_button = tk.Button(master=self,text="Recover Account",command=self.recover_account)
+        self.recover_button.grid(row=7,columnspan=2,padx=10,pady=10)
+
         # Button to shut down
         self.shutdown_button = tk.Button(master=self, text="Shut down", command=master.destroy)
-        self.shutdown_button.grid(row=7, columnspan=2, padx=10, pady=10)
+        self.shutdown_button.grid(row=8, columnspan=2, padx=10, pady=10)
 
     def login(self):
         receptionist_login = Receptionist.authenticate(self.username_var.get(), self.password_var.get(),self.path_1)
@@ -73,6 +78,12 @@ class HomePage(tk.Frame):
 
         self.username_entry.delete(0,tk.END)
         self.password_entry.delete(0,tk.END)
+    
+    def recover_account(self):
+        self.master.hide_homepage()
+        recovery = Recovery(self.master)
+        recovery.show_recover()
+
         
 if __name__ == "__main__":
     pass
