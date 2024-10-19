@@ -101,6 +101,12 @@ class SignUpPage(tk.Frame):
             self.alert_var.set("First name must be all letters.")
         elif lastname.isalpha() == False:
             self.alert_var.set("Last name must be all letters.")
+        elif " " in firstname:
+            self.alert_var.set("First name must not have any spaces.")
+        elif " " in lastname:
+            self.alert_var.set("Last name must not have any spaces.")
+        elif " " in phonenumber:
+            self.alert_var.set("Phone number must not have any spaces.") 
         elif " " in username:
             self.alert_var.set("Username must not have any spaces.")
         elif " " in password:
@@ -210,3 +216,6 @@ class SignUpPage(tk.Frame):
                 lines = file.readlines()
                 user_id = int(lines[-1][0]) + 1
                 file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password},{code}")
+
+if __name__ == "__main__":
+    pass
