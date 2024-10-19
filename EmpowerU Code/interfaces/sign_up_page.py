@@ -92,7 +92,7 @@ class SignUpPage(tk.Frame):
         username = self.username_var.get()
         password = self.password_var.get()
         confirm_password = self.confirm_password_var.get()
-        lines_user,lines_receptionist,activation_code = self.assign_role()
+        self.assign_role()
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
             self.alert_var.set("Error! All fields must be filled in.")
@@ -100,10 +100,10 @@ class SignUpPage(tk.Frame):
             self.alert_var.set("First name must be all letters.")
         elif lastname.isalpha() == False:
             self.alert_var.set("Last name must be all letters.")
-        elif self.assign == None:
-            self.alert_var.set("Activation Code is Incorrect.")
         elif password != confirm_password:
             self.alert_var.set("Passwords do not match.")
+        elif self.assign == None:
+            self.alert_var.set("Activation Code is Incorrect.")
         elif self.username_taken(username,self.assign) == None:
             self.alert_var.set("Make sure that the login information file exists.")
         elif self.username_taken(username,self.assign):
@@ -111,8 +111,9 @@ class SignUpPage(tk.Frame):
         elif len(phonenumber) != 10 or phonenumber.isdigit() == False:
             self.alert_var.set("Invalid Phone number.")
         else:
-            self.code_remove(self.assign,lines_user,lines_receptionist,activation_code)
-            self.new_user(firstname, lastname, phonenumber, username, password,self.assign)
+            self.signup_button.config(state="disabled")
+            self.code_remove(self.assign)
+            self.new_user(firstname, lastname, phonenumber, username, password,self.assign,self.activation_code)
             self.alert_label.config(fg="green")
             self.timer()
         
@@ -150,60 +151,58 @@ class SignUpPage(tk.Frame):
         self.alert_label.config(fg="red")
 
     def timer(self):
-        self.alert_var.set(f"Successful Login! Returning to Sign In page in {self.constant}.")
+        self.alert_var.set(f"Account Created Successfully! Returning to Sign In page in {self.constant}.")
         self.constant -= 1
         if self.constant > -1:
             self.after(1000,self.timer)
         else:
+            self.signup_button.config(state="normal")
             self.constant = 3
             self.clear_entry()
             self.master.show_homepage()
         
     def assign_role(self):
-        activation_code = self.activate_var.get()
+        self.activation_code = self.activate_var.get()
         activation_code_user = open("./data/activation_code_user.txt","r")
         activation_code_receptionist = open("./data/activation_code_receptionist.txt","r")
         lines_user = activation_code_user.readlines()
         lines_receptionist = activation_code_receptionist.readlines()
-        lines_user = [i.strip() for i in lines_user]
-        lines_receptionist = [i.strip() for i in lines_receptionist]
-        if activation_code in lines_user:
+        self.lines_user = [i.strip() for i in lines_user]
+        self.lines_receptionist = [i.strip() for i in lines_receptionist]
+        if self.activation_code in self.lines_user:
             self.assign = "User"
-            return lines_user,lines_receptionist,activation_code
-        elif activation_code in lines_receptionist:
+        elif self.activation_code in self.lines_receptionist:
             self.assign = "Receptionist"
-            return lines_user,lines_receptionist,activation_code
         else:
             self.assign = None
-            return None
 
-    def code_remove(self,role,user_line,recep_line,code):
+    def code_remove(self,role):
         if role == "User":
             activation_code_user = open("./data/activation_code_user.txt","w")
-            for i in range(len(user_line)):
-                if user_line[i] == code:
-                    user_line.pop(i)
-                    for line in user_line:
+            for i in range(len(self.lines_user)):
+                if self.lines_user[i] == self.activation_code:
+                    self.lines_user.pop(i)
+                    for line in self.lines_user:
                         activation_code_user.write(f"{line}\n")
                     break
         elif role == "Receptionist":
             activation_code_receptionist = open("./data/activation_code_receptionist.txt","w")
-            for i in range(len(recep_line)):
-                if recep_line[i] == code:
-                    recep_line.pop(i)
-                    for line in recep_line:
+            for i in range(len(self.lines_receptionist)):
+                if self.lines_receptionist[i] == self.activation_code:
+                    self.lines_receptionist.pop(i)
+                    for line in self.lines_receptionist:
                         activation_code_receptionist.write(f"{line}\n")
                     break
 
         
-    def new_user(self, firstname, lastname, phonenumber, username, password,role):
+    def new_user(self, firstname, lastname, phonenumber, username, password,role,code):
         if role == "User":
             with open(self.path_1,"r+") as file:
                 lines = file.readlines()
                 user_id = int(lines[-1][0]) + 1
-                file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password}")
+                file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password},{code}")
         elif role == "Receptionist":
             with open(self.path_2,"r+") as file:
                 lines = file.readlines()
                 user_id = int(lines[-1][0]) + 1
-                file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password}")
+                file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password},{code}")
