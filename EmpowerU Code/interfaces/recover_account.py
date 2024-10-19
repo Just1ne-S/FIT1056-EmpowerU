@@ -87,10 +87,6 @@ class Recovery(tk.Frame):
 
         if not firstname or not lastname or not username or not confirm_pass or not new_pass or not code:
             self.alert_var.set("Error! All fields must be filled in.")
-        elif firstname.isalpha() == False:
-            self.alert_var.set("First name must be all letters.")
-        elif lastname.isalpha() == False:
-            self.alert_var.set("Last name must be all letters.")
         elif " " in firstname:
             self.alert_var.set("First name must not have any spaces.")
         elif " " in lastname:
@@ -99,6 +95,10 @@ class Recovery(tk.Frame):
             self.alert_var.set("Username must not have any spaces.")
         elif " " in new_pass:
             self.alert_var.set("Password must not have any spaces.")
+        elif firstname.isalpha() == False:
+            self.alert_var.set("First name must be all letters.")
+        elif lastname.isalpha() == False:
+            self.alert_var.set("Last name must be all letters.")
         elif new_pass != confirm_pass:
             self.alert_var.set("Passwords do not match.")
         elif self.assign == None:
