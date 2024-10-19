@@ -97,12 +97,6 @@ class SignUpPage(tk.Frame):
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
             self.alert_var.set("Error! All fields must be filled in.")
-        elif firstname.isalpha() == False:
-            self.alert_var.set("First name must be all letters.")
-        elif lastname.isalpha() == False:
-            self.alert_var.set("Last name must be all letters.")
-        elif phonenumber.isdigit() == False:
-            self.alert_var.set("Phone number must be all numbers.")
         elif " " in firstname:
             self.alert_var.set("First name must not have any spaces.")
         elif " " in lastname:
@@ -113,6 +107,12 @@ class SignUpPage(tk.Frame):
             self.alert_var.set("Username must not have any spaces.")
         elif " " in password:
             self.alert_var.set("Password must not have any spaces.")
+        elif firstname.isalpha() == False:
+            self.alert_var.set("First name must be all letters.")
+        elif lastname.isalpha() == False:
+            self.alert_var.set("Last name must be all letters.")
+        elif phonenumber.isdigit() == False:
+            self.alert_var.set("Phone number must be all numbers.")
         elif password != confirm_password:
             self.alert_var.set("Passwords do not match.")
         elif self.assign == None:
