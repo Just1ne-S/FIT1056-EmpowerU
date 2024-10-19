@@ -101,6 +101,8 @@ class SignUpPage(tk.Frame):
             self.alert_var.set("First name must be all letters.")
         elif lastname.isalpha() == False:
             self.alert_var.set("Last name must be all letters.")
+        elif phonenumber.isdigit():
+            self.alert_var.set("Phone number must be all numbers.")
         elif " " in firstname:
             self.alert_var.set("First name must not have any spaces.")
         elif " " in lastname:
