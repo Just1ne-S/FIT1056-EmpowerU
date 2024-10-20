@@ -74,7 +74,7 @@ class HomePage(tk.Frame):
                                        image_path_3="./images/AI Logo.png")
             self.selection.selection_show()
         else:
-            self.alert_var.set("Login is unsucessful.")
+            self.alert_var.set("Login unsucessful.")
 
         self.username_entry.delete(0,tk.END)
         self.password_entry.delete(0,tk.END)
