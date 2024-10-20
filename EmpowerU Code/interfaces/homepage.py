@@ -4,6 +4,7 @@ from app.Receptionist import Receptionist
 from app.User import User
 from interfaces.subject_selection import Selection
 from interfaces.recover_account import Recovery
+from interfaces.about_us import about_us 
 
 
 class HomePage(tk.Frame):
@@ -60,6 +61,49 @@ class HomePage(tk.Frame):
         # Button to shut down
         self.shutdown_button = tk.Button(master=self, text="Shut down", command=master.destroy)
         self.shutdown_button.grid(row=8, columnspan=2, padx=10, pady=10)
+
+        # Button to display about us 
+        self.about_us_button = tk.Button(master=self, text="About Us", command=self.show_about_us_info)
+        self.about_us_button.grid(row=0, column=0, padx=10, pady=10, sticky=tk.NW)
+
+        # Label to display the About Us
+        self.about_us_label = tk.Label(master=self, text="", justify="left", wraplength=500)
+        self.about_us_label.grid(row=9, columnspan=2, padx=10, pady=10)
+        self.about_us_label.grid_remove()
+
+        # Close button to hide About Us (initially hidden)
+        self.close_button = tk.Button(master=self, text="Close", command=self.hide_about_us)
+        self.close_button.grid(row=10, columnspan=2, padx=10, pady=10)
+        self.close_button.grid_remove()
+
+    def show_about_us_info(self):
+        self.hide_login_display()
+        about_us(self.about_us_label, self.close_button)
+
+    def hide_about_us(self):
+        self.about_us_label.grid_remove()
+        self.close_button.grid_remove()
+        self.show_login_display()
+
+    def hide_login_display(self):
+        self.username_label.grid_remove()
+        self.username_entry.grid_remove()
+        self.password_label.grid_remove()
+        self.password_entry.grid_remove()
+        self.login_button.grid_remove()
+        self.signup_button.grid_remove()
+        self.recover_button.grid_remove()
+        self.alert_label.grid_remove()
+
+    def show_login_display(self):
+        self.username_label.grid()
+        self.username_entry.grid()
+        self.password_label.grid()
+        self.password_entry.grid()
+        self.login_button.grid()
+        self.signup_button.grid()
+        self.recover_button.grid()
+        self.alert_label.grid()
 
     def login(self):
         receptionist_login = Receptionist.authenticate(self.username_var.get(), self.password_var.get(),self.path_1)
