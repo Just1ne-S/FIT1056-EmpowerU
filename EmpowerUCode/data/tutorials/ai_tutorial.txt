@@ -1,0 +1,23 @@
+# AI Basics Tutorial
+"""
+This tutorial covers essential concepts in artificial intelligence (AI), focusing on supervised and unsupervised learning, as well as how to evaluate the performance of machine learning models.
+"""
+
+## Supervised Learning
+"""
+Supervised learning is one of the most commonly used forms of machine learning. In this method, the model is trained on labeled data, where each input has a corresponding known output. The goal is to make accurate predictions when new, unseen data is provided.
+Common applications include classification tasks like spam detection and regression tasks like predicting house prices.
+Supervised learning algorithms include:
+- Decision Trees
+- Support Vector Machines (SVM)
+- Random Forests
+- Linear and Logistic Regression
+"""
+
+## Model Evaluation
+"""
+Once a machine learning model is trained, it is important to evaluate its performance. Key metrics used to assess a model's accuracy include:
+- **Accuracy**: The proportion of correctly predicted outcomes.
+- **Precision**: The ratio of true positive results to all positive results (including false positives).
+- **Recall**: The ratio of true positive results to all actual positives (including false negatives).
+These metrics help us understand how well a model is performing on the given task.

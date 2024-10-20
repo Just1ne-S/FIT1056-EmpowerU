@@ -1,0 +1,42 @@
+###QUESTION
+What is the correct syntax to output "Hello World" in Python?
+###TYPE
+mcq
+###INSTRUCTIONS
+Select the correct syntax for printing the string "Hello World" in Python.
+###OPTIONS
+A) echo "Hello World"
+B) print("Hello World")
+C) printf("Hello World")
+D) cout << "Hello World"
+###ANSWER
+B
+###HINT
+Python uses the `print()` function to display output to the console, Python syntax requires using `print()` with parentheses, The correct syntax to print "Hello World" in Python is `print("Hello World")`.
+
+###QUESTION
+Write a function `add_two_numbers(a, b)` that returns the sum of `a` and `b`.
+###TYPE
+coding_task
+###INSTRUCTIONS
+Implement a function in Python that takes two parameters and returns their sum.
+###ANSWER
+def add_two_numbers(a, b):
+    return a + b
+###HINT
+Remember that the `+` operator adds two values together in Python, Use the `return` statement to return the sum of `a` and `b`, The function should return the result of `a + b`.
+
+###QUESTION
+Arrange the following steps in the correct order for Python function definition.
+###TYPE
+drag_and_drop
+###INSTRUCTIONS
+Drag and drop the steps in the correct order to define a Python function.
+###OPTIONS
+1) def function_name(parameters):
+2) return statement
+3) function body
+###ANSWER
+1, 3, 2
+###HINT
+The function definition starts with `def`, then the body of the function, and finally the return statement, After defining the function using `def`, the function's logic goes in the body, followed by the return statement, The correct order is: function definition, function body, and then return statement.

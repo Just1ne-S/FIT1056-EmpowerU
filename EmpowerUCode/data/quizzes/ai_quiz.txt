@@ -1,0 +1,62 @@
+###QUESTION
+Which algorithm is used for supervised learning?
+###TYPE
+mcq
+###INSTRUCTIONS
+Select the algorithm that is typically used for supervised learning tasks.
+###OPTIONS
+A) K-means
+B) Decision Trees
+C) Apriori Algorithm
+D) PCA
+###ANSWER
+B
+###HINT
+Supervised learning algorithms require labeled data for training, Supervised learning algorithms can be used for classification tasks, Decision Trees are used for classification in supervised learning.
+
+###QUESTION
+What is overfitting in machine learning?
+###TYPE
+mcq
+###INSTRUCTIONS
+Select the option that best describes overfitting in machine learning.
+###OPTIONS
+A) A model that generalizes well
+B) A model that performs well on training data but poorly on new data
+C) A model that underestimates the complexity of the data
+D) A model that works well across all datasets
+###ANSWER
+B
+###HINT
+Overfitting happens when a model learns too much detail from the training data and performs poorly on unseen data, Overfitting occurs when the model memorizes the training data, not generalizes it, Overfitting is usually detected when the model performs worse on new data than on the training data.
+
+###QUESTION
+Write a function predict() that returns a random integer between 0 and 1 (simulate binary classification).
+###TYPE
+coding_task
+###INSTRUCTIONS
+Implement a function in Python that returns either 0 or 1 to simulate binary classification.
+###ANSWER
+"""
+import random
+def predict():
+    return random.randint(0, 1)
+"""
+###HINT
+Use the random module in Python to simulate a random outcome, The function should return a random integer, You can use `random.randint(0, 1)` to return a binary result (0 or 1).
+
+###QUESTION
+Arrange the following steps in the correct order for training a machine learning model.
+###TYPE
+drag_and_drop
+###INSTRUCTIONS
+Drag and drop the steps in the correct order to train a machine learning model.
+###OPTIONS
+A) Collect data
+B) Train model
+C) Evaluate model
+D) Preprocess data
+###ANSWER
+A, D, B, C
+###HINT
+Before training the model, the data must be collected and preprocessed, Preprocessing is needed before training the model, After preprocessing, the model is trained and then evaluated.

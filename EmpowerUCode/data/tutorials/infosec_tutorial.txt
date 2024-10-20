@@ -1,0 +1,21 @@
+# Information Security Basics Tutorial
+"""
+This tutorial focuses on key concepts in information security, including authentication mechanisms, encryption techniques, and firewalls.
+"""
+
+## Authentication Methods
+"""
+Authentication ensures that the individual or system requesting access to resources is who they claim to be. There are several common methods of authentication:
+- **Password-based authentication**: The user provides a password, which is checked against the system's records.
+- **Biometric authentication**: This method uses unique biological traits, such as fingerprints or facial recognition, to verify identity.
+- **Two-factor authentication (2FA)**: Combines two different methods of authentication, typically a password and a verification code sent to a trusted device.
+These methods are crucial in securing systems and preventing unauthorized access.
+"""
+
+## Encryption
+"""
+Encryption is a process used to protect sensitive data by converting it into an unreadable format, called ciphertext, which can only be deciphered by authorized users with a decryption key.
+Two main types of encryption are:
+- **Symmetric encryption**: Both the sender and receiver share the same key for encryption and decryption. Examples include AES and DES.
+- **Asymmetric encryption**: This method uses two different keys—a public key for encryption and a private key for decryption. RSA is a common example.
+Encryption is a fundamental tool for ensuring confidentiality and data integrity in information security.

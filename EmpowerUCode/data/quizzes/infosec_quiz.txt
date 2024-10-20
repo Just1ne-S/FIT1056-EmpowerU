@@ -1,0 +1,42 @@
+###QUESTION
+Which of the following is an example of a strong password?
+###TYPE
+mcq
+###INSTRUCTIONS
+Select the option that represents the strongest password based on best security practices.
+###OPTIONS
+A) password123
+B) 12345678
+C) P@ssw0rd!
+D) admin
+###ANSWER
+C
+###HINT
+A strong password typically contains a mix of letters, numbers, and special characters, A strong password should not be easy to guess or contain common words, Passwords like "password123" are weak because they use common words and numbers.
+
+###QUESTION
+What is the purpose of a firewall in network security?
+###TYPE
+mcq
+###INSTRUCTIONS
+Select the most accurate description of the function of a firewall in network security.
+###OPTIONS
+A) Monitor outgoing network traffic
+B) Block unauthorized access
+C) Encrypt data during transmission
+D) Protect against phishing attacks
+###ANSWER
+B
+###HINT
+A firewall is primarily used to block unauthorized access to a network, Firewalls help control incoming and outgoing network traffic, A firewall blocks unauthorized access but does not encrypt data or directly protect against phishing attacks.
+
+###QUESTION
+Define the term "phishing" in a sentence.
+###TYPE
+coding_task
+###INSTRUCTIONS
+Provide a short definition of the term "phishing."
+###ANSWER
+Phishing is a fraudulent attempt to obtain sensitive information by pretending to be a trustworthy entity.
+###HINT
+Phishing often involves fake emails or websites to trick users into revealing information, Phishing targets users by masquerading as a legitimate service or company, Phishing is an attempt to steal sensitive information by pretending to be a trusted source.

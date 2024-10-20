@@ -1,0 +1,20 @@
+# Python Basics Tutorial
+"""
+Python is a general-purpose programming language known for its simplicity and wide range of applications. This tutorial will cover variables, data types, and basic control structures.
+"""
+
+## Variables and Data Types
+"""
+In Python, variables are used to store data. Python supports several data types, including:
+- **Integers**: Whole numbers (e.g., 10, -3)
+- **Floats**: Numbers with decimal points (e.g., 3.14, -0.5)
+- **Strings**: Sequences of characters (e.g., "Hello, world!")
+- **Lists**: Ordered collections of items, which can be of different types (e.g., [1, "apple", 3.14]).
+Python is dynamically typed, meaning that you do not need to explicitly declare variable types.
+"""
+
+## Conditional Statements
+"""
+Conditional statements allow you to make decisions in your program based on certain conditions. In Python, the `if`, `elif`, and `else` statements control the flow of logic:
+- `if` evaluates a condition, and if it's true, the block of code under it is executed.
+- `elif` (short for else if) evaluates another condition if the previous `if` condition was false
