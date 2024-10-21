@@ -10,12 +10,13 @@ from interfaces.about_us_content import AboutUs
 
 class HomePage(tk.Frame):
 
-    def __init__(self,master,image_path):
+    def __init__(self,master,image_path,about_us_button):
         super().__init__(master=master)
         self.master = master
         self.image_path = image_path
         self.path_1 = "./data/receptionist_login_info.txt"
         self.path_2 = "./data/user_login_info.txt"
+        self.about_us_button = about_us_button
 
         self.logo_photoimage = tk.PhotoImage(master=self, file=self.image_path)
         self.logo_label = tk.Label(master=self, image=self.logo_photoimage, width=400, height=270)
@@ -63,13 +64,10 @@ class HomePage(tk.Frame):
         self.shutdown_button = tk.Button(master=self, text="Shut down", command=master.destroy)
         self.shutdown_button.grid(row=8, columnspan=2, padx=10, pady=10)
         
-        self.about_us_button = AboutUsButton(master=self.master)
-        self.about_us_button.show_button()
         self.about_us_button.button.config(command=self.show_about_us_info)
 
     def show_about_us_info(self):
         self.master.hide_homepage()
-        self.about_us_button.hide_button()
         self.about_us = AboutUs(self.master)
         self.about_us.show_about_us()
         self.about_us.close_button.config(command=self.hide_about_us)
@@ -91,6 +89,7 @@ class HomePage(tk.Frame):
                                        image_path_2="./images/Information Security logo.png",\
                                        image_path_3="./images/AI Logo.png",\
                                        user=user_login)
+            self.about_us_button.hide_button()
             self.selection.selection_show()
         else:
             self.alert_var.set("Login unsuccessful.")
