@@ -1,13 +1,13 @@
 import tkinter as tk
 from interfaces.main_window import MW
-from app.adjust_lines import adjust_lines
+from app.compiled_adjust_lines import compiled_adjust_lines
 
 def main():
-    adjust_lines("./data/receptionist_login_info.txt")
-    adjust_lines("./data/user_login_info.txt")
-    root = MW(title="EmpowerU - Learning Application",width="950",height="700")
+    compiled_adjust_lines()
+    root = MW(title="EmpowerU - Learning Application",width="1200",height="840")
     root.mainloop()
-    print("EmpowerU proper shutdown completed.")
+    print("EmpowerU proper shutdown completed.")    
 
 if __name__ == "__main__":
     main()
+                
