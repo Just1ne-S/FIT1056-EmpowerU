@@ -1,0 +1,30 @@
+#6. Incident Response
+##- Definition: 
+Incident response refers to the structured approach taken by an organization to prepare for, detect, respond to, and recover from cybersecurity incidents. 
+Effective incident response is critical for minimizing the impact of security breaches and restoring normal operations.
+
+##- Incident Response Plan: 
+A documented strategy that outlines the steps to be taken in response to security incidents. An effective incident response plan includes the following components:
+  - Preparation: 
+  Establishing and training an incident response team, defining roles and responsibilities, and conducting regular drills to test the plan's effectiveness. 
+  Preparation also involves ensuring that necessary tools and resources are in place for a swift response.
+  
+  - Detection and Analysis: 
+  Implementing monitoring tools to detect suspicious activities and analyzing potential incidents to determine their nature and severity. 
+  Early detection is crucial for preventing further damage and allows for a more effective response.
+
+  - Containment: 
+  The process of limiting the impact of an incident. This may involve isolating affected systems, blocking malicious traffic, or disabling compromised accounts. 
+  The goal is to prevent the incident from spreading while preserving evidence for investigation.
+
+  - Eradication: 
+  After containing the incident, steps must be taken to remove the root cause and any malicious elements from the environment. 
+  This may involve patching vulnerabilities, deleting malware, or resetting compromised accounts.
+
+  - Recovery: 
+  Restoring affected systems and services to normal operation while monitoring for any signs of re-infection. 
+  This phase also includes evaluating the incident response process to identify areas for improvement.
+
+##- Post-Incident Review: 
+A critical analysis conducted after an incident to evaluate the response effectiveness, identify lessons learned, and update the incident response plan as needed. 
+This review helps organizations improve their preparedness for future incidents, ensuring a continuous cycle of improvement in their security posture.

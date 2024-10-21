@@ -1,0 +1,30 @@
+# 5. Access Control Measures
+## - Access Control:
+A key element of information security that manages who can view or use resources in a computing environment. Effective access control is vital for protecting sensitive 
+information and ensuring that only authorized individuals can access specific resources.
+
+## - Types of Access Control:
+- Discretionary Access Control (DAC): 
+  In DAC, resource owners decide who can access specific resources. While flexible, it can lead to security risks if not managed well. 
+  For example, a file owner might mistakenly grant access to unauthorized users.
+
+- Mandatory Access Control (MAC): 
+  MAC enforces security policies across an organization. Access rights are set by a central authority based on security levels (e.g., top secret, public). 
+  Users cannot change these rights, making it suitable for government and military applications.
+
+- Role-Based Access Control (RBAC): 
+  In RBAC, access rights are based on user roles within the organization. Users get permissions tied to their job functions, 
+  which simplifies management and enhances security by limiting access to necessary information.
+
+## - Authentication Methods:
+- Passwords: 
+  The most common authentication method, requiring users to provide a secret word or phrase. While simple, weak password management can be a risk. 
+  Strong, complex passwords and regular updates are encouraged.
+
+- Multi-Factor Authentication (MFA): 
+  MFA requires multiple verification forms before access is granted. This adds a layer of security beyond passwords. 
+  For instance, users may need to enter a password and a one-time code sent to their mobile device.
+
+- Biometrics: 
+  This method uses unique biological traits (e.g., fingerprints, facial recognition) for identity verification. 
+Biometrics offer high security since biological traits are hard to replicate and are increasingly used for secure access.

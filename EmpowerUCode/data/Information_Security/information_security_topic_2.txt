@@ -1,0 +1,30 @@
+#2. Types of Threats
+##- Malware: 
+Malware, short for malicious software, refers to various types of software designed to damage, disrupt, or gain unauthorized access to computer systems. 
+It is a significant threat to both individual users and organizations, leading to data loss, system failures, and financial harm. 
+Malware can come in many forms, such as Viruses, Worms, and Trojan Horses, each with its unique methods of attack.
+##  - Viruses: 
+  These are malicious code fragments that attach themselves to legitimate software or files, spreading when the infected software is executed. 
+  Viruses can corrupt or delete files, and their effects can range from minor annoyances to significant data loss. 
+  For instance, a virus might corrupt critical system files, leading to operational disruptions.
+
+##  - Worms: 
+  Unlike viruses, worms are standalone malware that replicate themselves and spread to other computers without needing to attach to legitimate programs. 
+  They often exploit vulnerabilities in operating systems or applications, consuming network bandwidth and causing widespread disruption. 
+  An example is the Morris Worm, which infected thousands of computers in the late 1980s, illustrating the potential for rapid spread.
+
+##  - Trojan Horses: 
+  These are malicious programs disguised as legitimate software, tricking users into installing them. Once installed, Trojans can steal sensitive information, 
+  create backdoors for other malware, or perform other harmful activities without the user's knowledge. A notable example is the Zeus Trojan, 
+  which targets banking information and has led to significant financial losses for users and institutions.
+
+##- Phishing: 
+Phishing is a deceptive practice used to obtain sensitive information, such as usernames, passwords, and credit card details, by pretending to be a trustworthy entity. 
+Phishing attacks can take various forms, including emails, text messages, and fake websites that closely mimic legitimate ones. Awareness and training are essential 
+to help users recognize and avoid phishing attempts. Organizations often conduct simulated phishing exercises to educate employees about identifying suspicious emails.
+
+##- Denial-of-Service (DoS) Attacks: 
+A Denial-of-Service attack aims to overwhelm a system, service, or network, rendering it unavailable to legitimate users. Attackers achieve this by flooding the 
+target with excessive traffic or exploiting vulnerabilities. Such attacks can cause significant financial losses, disrupt operations, and damage an organization's reputation. 
+Variants like Distributed Denial-of-Service (DDoS) attacks involve multiple compromised systems attacking a single target, amplifying the threat. 
+For example, during a DDoS attack, a website might experience a sudden surge in traffic that exceeds its bandwidth capacity, leading to downtime and loss of service to users.

@@ -1,0 +1,30 @@
+# 3. Cryptography Basics
+## - Definition:
+Cryptography is the science of protecting data by changing it into formats that are unreadable to unauthorized users. This ensures that only those who are allowed can read or 
+access the information. It is essential for maintaining the confidentiality and integrity of data, especially in communication and storage. Cryptography underpins many security 
+protocols and is used in various applications, from securing emails to protecting sensitive files.
+
+## - Encryption and Decryption:
+- Encryption: 
+  This is the process of converting readable data (plaintext) into unreadable data (ciphertext) using an algorithm and a key. Encryption protects data from unauthorized access 
+  during storage or transmission. For example, the Advanced Encryption Standard (AES) is a commonly used encryption method known for its strength and efficiency.
+
+- Decryption: 
+  This is the reverse of encryption, turning ciphertext back into readable plaintext using a key. Authorized users use decryption to access protected data, 
+  relying on secure key management to keep the keys confidential. Poor key management can compromise the encryption process, making sensitive data vulnerable.
+
+## - Types of Encryption:
+- Symmetric Encryption: 
+  This method uses the same key for both encryption and decryption. It is efficient for large volumes of data and is often used in applications that require fast processing. 
+  Examples include AES and Data Encryption Standard (DES). However, secure key management is crucial; if the key is lost or exposed, data security is at risk. 
+  Both sender and receiver must securely share the encryption key in advance.
+
+- Asymmetric Encryption: 
+  This method uses a pair of keys: a public key for encryption and a private key for decryption. This increases security because the public key can be shared openly without 
+  risking the private key. Asymmetric encryption is commonly used in secure communications, like SSL/TLS protocols for safe web browsing. For instance, when you visit a 
+  secure website, the server sends its public key to your browser, which then uses this key to encrypt sensitive data, ensuring that only the server can decrypt it with its private key.
+
+## - Cryptographic Hash Functions: 
+These algorithms take an input and produce a fixed-size string of characters, known as a hash value. Hash functions are important for ensuring data integrity. 
+Even a small change in the input results in a completely different hash, making it easy to spot alterations. Common examples include SHA-256 and MD5. 
+Hash functions are widely used in digital signatures and data integrity checks to verify that data hasn't been changed.
