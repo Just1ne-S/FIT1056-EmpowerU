@@ -171,6 +171,7 @@ class SignUpPage(tk.Frame):
             self.after(1000,self.timer)
         else:
             self.signup_button.config(state="normal")
+            self.home_button.config(state="normal")
             self.constant = 3
             self.clear_entry()
             self.master.show_homepage()
