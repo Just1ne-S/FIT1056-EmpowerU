@@ -104,7 +104,8 @@ class Recovery(tk.Frame):
         elif self.assign == None:
             self.alert_var.set("Information is Incorrect.")
         else:
-            self.recover_button.config(state="disabled")    
+            self.recover_button.config(state="disabled")  
+            self.home_button.config(state="disabled")  
             self.replace_info(lines,self.assign)
             self.alert_label.config(fg="green")
             self.timer()
