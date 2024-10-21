@@ -4,19 +4,20 @@ from app.Receptionist import Receptionist
 from app.User import User
 from interfaces.subject_selection import Selection
 from interfaces.recover_account import Recovery
-from interfaces.About_Us.about_us_button import AboutUsButton
 from interfaces.About_Us.about_us_content import AboutUs
+from interfaces.Tips.Tips_content import TipsContent
 
 
 class HomePage(tk.Frame):
 
-    def __init__(self,master,image_path,about_us_button):
+    def __init__(self,master,image_path,about_us_button,tips_button):
         super().__init__(master=master)
         self.master = master
         self.image_path = image_path
         self.path_1 = "./data/receptionist_login_info.txt"
         self.path_2 = "./data/user_login_info.txt"
         self.about_us_button = about_us_button
+        self.tips_button = tips_button
 
         self.logo_photoimage = tk.PhotoImage(master=self, file=self.image_path)
         self.logo_label = tk.Label(master=self, image=self.logo_photoimage, width=400, height=270)
@@ -66,6 +67,8 @@ class HomePage(tk.Frame):
         
         self.about_us_button.button.config(command=self.show_about_us_info)
 
+        self.tips_button.button.config(command=self.show_tips_button)
+
     def show_about_us_info(self):
         self.master.hide_homepage()
         self.about_us = AboutUs(self.master)
@@ -75,6 +78,17 @@ class HomePage(tk.Frame):
     def hide_about_us(self):
         self.about_us.hide_about_us()
         self.about_us_button.show_button()
+        self.master.show_homepage()
+
+    def show_tips_button(self):
+        self.master.hide_homepage()
+        self.tips = TipsContent(master=self.master)
+        self.tips.show_tips()
+        self.tips.close_button.config(command=self.hide_tips_button)
+
+    def hide_tips_button(self):
+        self.tips.hide_tips()
+        self.tips_button.show_button()
         self.master.show_homepage()
 
     def login(self):
@@ -89,8 +103,8 @@ class HomePage(tk.Frame):
                                        image_path_2="./images/Information Security logo.png",\
                                        image_path_3="./images/AI Logo.png",\
                                        user=user_login)
-            self.about_us_button.hide_button()
             self.selection.selection_show()
+            self.alert_var.set("")
         else:
             self.alert_var.set("Login unsuccessful.")
 
