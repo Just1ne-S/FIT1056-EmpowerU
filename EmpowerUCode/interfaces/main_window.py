@@ -3,6 +3,7 @@ import tkinter as tk
 from interfaces.homepage import HomePage
 from interfaces.sign_up_page import SignUpPage
 from interfaces.About_Us.about_us_button import AboutUsButton
+from interfaces.Tips.Tips_button import TipsButton
 
 class MW(tk.Tk):
     
@@ -13,7 +14,8 @@ class MW(tk.Tk):
         super().iconphoto(True,tk.PhotoImage(file="./images/EmpowerU Icon.png"))
 
         self.about_us_button = AboutUsButton(master=self)
-        self.homepage = HomePage(master=self, image_path="./images/EmpowerU Logo.png",about_us_button=self.about_us_button)
+        self.tips_button = TipsButton(master=self)
+        self.homepage = HomePage(master=self, image_path="./images/EmpowerU Logo.png",about_us_button=self.about_us_button,tips_button=self.tips_button)
         self.sign_up_page = SignUpPage(master=self)
         self.show_homepage()
 
@@ -21,9 +23,11 @@ class MW(tk.Tk):
         self.sign_up_page.place_forget()
         self.homepage.place(relx=.5, rely=.5, anchor=tk.CENTER)
         self.about_us_button.show_button()
+        self.tips_button.show_button()
 
     def hide_homepage(self):
         self.about_us_button.hide_button()
+        self.tips_button.hide_button()
         self.homepage.place_forget()
 
     def show_sign_up_page(self):
