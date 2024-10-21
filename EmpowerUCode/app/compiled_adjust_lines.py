@@ -6,3 +6,5 @@ def compiled_adjust_lines():
     adjust_lines("./data/activation_code_user.txt")
     adjust_lines("./data/activation_code_receptionist.txt")
     adjust_lines("./data/Python/python_progress.txt")
+    adjust_lines("./data/AI/ai_progress.txt")
+    adjust_lines("./data/Information_Security/information_security_progress.txt")
