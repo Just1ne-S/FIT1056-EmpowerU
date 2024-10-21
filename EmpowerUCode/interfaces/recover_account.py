@@ -157,6 +157,7 @@ class Recovery(tk.Frame):
             self.after(1000,self.timer)
         else:
             self.recover_button.config(state="normal")  
+            self.home_button.config(state="normal")
             self.constant = 3
             self.clear_entry()
             self.forget_recover()
