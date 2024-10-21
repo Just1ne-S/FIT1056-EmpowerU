@@ -220,13 +220,10 @@ class SignUpPage(tk.Frame):
                 file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password},{code}")
                 try:
                     with open("./data/Python/python_progress.txt","r+") as file:
-                        print(file.readlines())
                         file.write(f"\n{user_id},True,True,True,True,True,True,True,True,True")
                     with open("./data/Information_Security/information_security_progress.txt","r+") as file:
-                        print(file.readlines())
                         file.write(f"\n{user_id},True,True,True,True,True,True,True,True,True")
                     with open("./data/AI/ai_progress.txt","r+") as file:
-                        print(file.readlines())
                         file.write(f"\n{user_id},True,True,True,True,True,True,True,True,True")
                 except FileNotFoundError:
                     print("Make sure that all files are present in the data folder.")
