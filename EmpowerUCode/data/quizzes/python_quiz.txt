@@ -33,10 +33,10 @@ drag_and_drop
 ###INSTRUCTIONS
 Drag and drop the steps in the correct order to define a Python function.
 ###OPTIONS
-1) def function_name(parameters):
-2) return statement
-3) function body
+A) def function_name(parameters):
+B) return statement
+C) function body
 ###ANSWER
-1, 3, 2
+A, C, B
 ###HINT
 The function definition starts with `def`, then the body of the function, and finally the return statement, After defining the function using `def`, the function's logic goes in the body, followed by the return statement, The correct order is: function definition, function body, and then return statement.
