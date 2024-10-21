@@ -93,7 +93,7 @@ class HomePage(tk.Frame):
                                        user=user_login)
             self.selection.selection_show()
         else:
-            self.alert_var.set("Login unsucessful.")
+            self.alert_var.set("Login unsuccessful.")
 
         self.username_entry.delete(0,tk.END)
         self.password_entry.delete(0,tk.END)
