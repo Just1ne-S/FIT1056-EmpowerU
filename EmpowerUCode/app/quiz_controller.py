@@ -1,5 +1,5 @@
-from file_handler import parse_quiz_file
-from quiz_validator import QuizValidator
+from app.file_handler import parse_quiz_file
+from app.quiz_validator import QuizValidator
 
 
 class QuizController:
