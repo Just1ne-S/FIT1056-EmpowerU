@@ -115,7 +115,8 @@ class HomePage(tk.Frame):
             self.selection = Selection(master=self.master,\
                                        image_path_1="./images/Python Logo.png",\
                                        image_path_2="./images/Information Security logo.png",\
-                                       image_path_3="./images/AI Logo.png")
+                                       image_path_3="./images/AI Logo.png",\
+                                       user=user_login)
             self.selection.selection_show()
         else:
             self.alert_var.set("Login unsucessful.")
