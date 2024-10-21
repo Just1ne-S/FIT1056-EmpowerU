@@ -31,7 +31,7 @@ class MW(tk.Tk):
         self.homepage.place_forget()
 
     def show_sign_up_page(self):
-        self.homepage.place_forget()
+        self.hide_homepage()
         self.sign_up_page.place(relx=.5, rely=.5, anchor=tk.CENTER)
 
 if __name__ == "__main__":
