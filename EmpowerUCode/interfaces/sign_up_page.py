@@ -175,8 +175,11 @@ class SignUpPage(tk.Frame):
             self.master.show_homepage()
         
     def assign_role(self):
-        activation_code_user = open("./data/activation_code_user.txt","r")
-        activation_code_receptionist = open("./data/activation_code_receptionist.txt","r")
+        try:
+            activation_code_user = open("./data/activation_code_user.txt","r")
+            activation_code_receptionist = open("./data/activation_code_receptionist.txt","r")
+        except FileNotFoundError:
+            print("Make sure that all files are present in the data folder.")
         lines_user = activation_code_user.readlines()
         lines_receptionist = activation_code_receptionist.readlines()
         self.lines_user = [i.strip() for i in lines_user]
@@ -213,6 +216,13 @@ class SignUpPage(tk.Frame):
                 lines = file.readlines()
                 user_id = int(lines[-1][0]) + 1
                 file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password},{code}")
+                try:
+                    with open("./data/Python/python_progress.txt","r+") as file:
+                        file.write(f"{user_id},True,True,True,True,True,True,True,True")
+                    with open("./data/Information_Security/information_security_progress.txt","r+") as file:
+                        file.write(f"{user_id},True,True,True,True,True,True,True,True")
+                except FileNotFoundError:
+                    print("Make sure that all files are present in the data folder.")
         elif role == "Receptionist":
             with open(self.path_2,"r+") as file:
                 lines = file.readlines()
