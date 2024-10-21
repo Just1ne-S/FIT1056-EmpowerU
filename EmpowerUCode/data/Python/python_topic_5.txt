@@ -1,0 +1,18 @@
+#5. Functions and Modules
+Defining and Calling Functions  
+Functions are reusable pieces of code.  
+def greet(name):  
+    print("Hello, " + name)
+
+greet("Justin")
+
+#Lambda Functions  
+Lambda functions are short, anonymous functions.  
+square = lambda x: x * x  
+print(square(5))  # Output: 25
+
+#Importing Modules and Libraries  
+Modules are collections of functions.  
+import math  
+print(math.sqrt(16))  # Output: 4.0  
+Install additional libraries using pip, e.g., pip install numpy.

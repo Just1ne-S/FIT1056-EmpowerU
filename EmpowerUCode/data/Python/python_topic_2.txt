@@ -1,0 +1,24 @@
+#2. Python Basics
+Variables and Data Types  
+Variables are used to store information in Python:
+age = 19  
+name = "Justin"  
+is_student = True  
+#Data types:
+- int for integers (e.g., 10)
+- float for decimal numbers (e.g., 3.14)
+- str for strings (e.g., "Hello")
+- bool for boolean values (True or False)
+
+#Basic Operators  
+- Arithmetic Operators: +, -, *, /
+- Comparison Operators: ==, !=, >, <
+- Logical Operators: and, or, not
+
+#Input and Output in Python  
+name = input("Enter your name: ")  
+print("Hello, " + name)
+
+#Comments in Python  
+- Single-line: # This is a comment
+- Multi-line: '''This is a multi-line comment'''

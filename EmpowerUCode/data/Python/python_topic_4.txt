@@ -1,0 +1,18 @@
+#4. Data Structures
+#Lists  
+fruits = ["apple", "banana", "cherry"]  
+print(fruits[0])  # Output: apple  
+Lists are mutable, meaning you can change their items.
+
+#Tuples  
+Tuples are similar to lists but are immutable (cannot be changed).  
+coordinates = (10, 20)
+
+#Dictionaries  
+Dictionaries store data in key-value pairs.  
+student = {"name": "Justin", "age": 19}  
+print(student["name"])  # Output: Justin
+
+#Sets  
+Sets store unique items with no specific order.  
+numbers = {1, 2, 3, 4}

@@ -1,0 +1,22 @@
+#3. Control Flow
+#Conditional Statements  
+age = 19  
+if age >= 18:  
+    print("You are an adult.")  
+else:  
+    print("You are a minor.")
+
+#Loops  
+#For Loop:
+  for i in range(5):  
+      print("Hello")
+#While Loop:
+  count = 0  
+  while count < 5:  
+      print(count)  
+      count += 1
+
+#Break, Continue, and Pass Statements  
+- break: Stops the loop immediately.
+- continue: Skips the current iteration.
+- pass: Does nothing, acts as a placeholder.

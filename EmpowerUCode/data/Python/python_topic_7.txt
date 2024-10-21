@@ -1,0 +1,22 @@
+#7. File Handling
+#Reading and Writing Files  
+Use open() to work with files.  
+file = open("example.txt", "w")  
+file.write("Hello, file!")  
+file.close()
+
+#Working with CSV Files  
+The csv module helps read and write CSV files.  
+import csv  
+with open('data.csv', mode='r') as file:  
+    reader = csv.reader(file)  
+    for row in reader:  
+        print(row)
+
+#Error Handling in File Operations  
+Handle errors with try-except.  
+try:  
+    file = open("nonexistent.txt", "r")  
+except FileNotFoundError:  
+    print("File not found!")  
+Use the with statement to manage file resources efficiently.

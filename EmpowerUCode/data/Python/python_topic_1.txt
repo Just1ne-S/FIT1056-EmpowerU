@@ -1,0 +1,24 @@
+#1. Introduction to Python
+What is Python?  
+Python is a versatile and popular programming language used in web development, data science, automation, and more. It is known for its simple syntax, making 
+-it a great language for beginners.  
+Fun fact: Python was created by Guido van Rossum and released in 1991.
+
+#Installing Python and Setting up the Environment  
+1. Visit the official Python website: python.org.
+2. Download the latest version for your operating system (Windows, macOS, or Linux).
+3. Follow the installation instructions provided.
+4. Make sure to check the box that says "Add Python to PATH" during installation.
+
+#Writing and Running Your First Python Program  
+1. Open your Python environment (IDE or terminal).
+2. Type the following code to display a simple message:
+   print("Hello, World!")
+3. Press Enter or run the code, and you should see the message "Hello, World!" on the screen.
+
+#Python IDEs and Text Editors  
+#Python code can be written in different environments:
+- IDEs (Integrated Development Environments): PyCharm, VS Code, Jupyter Notebooks.
+- Text Editors: Sublime Text, Notepad++.
+
+Choose the one that suits your needs as you grow more comfortable with coding.
