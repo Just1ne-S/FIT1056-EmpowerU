@@ -125,6 +125,7 @@ class SignUpPage(tk.Frame):
             self.alert_var.set("Invalid Phone number.")
         else:
             self.signup_button.config(state="disabled")
+            self.home_button.config(state="disabled")
             self.code_remove(self.assign)
             self.new_user(firstname, lastname, phonenumber, username, password,self.assign,self.activation_code)
             self.alert_label.config(fg="green")
@@ -218,9 +219,14 @@ class SignUpPage(tk.Frame):
                 file.write(f"\n{user_id},{firstname},{lastname},{phonenumber},{username},{password},{code}")
                 try:
                     with open("./data/Python/python_progress.txt","r+") as file:
-                        file.write(f"{user_id},True,True,True,True,True,True,True,True")
+                        print(file.readlines())
+                        file.write(f"\n{user_id},True,True,True,True,True,True,True,True,True")
                     with open("./data/Information_Security/information_security_progress.txt","r+") as file:
-                        file.write(f"{user_id},True,True,True,True,True,True,True,True")
+                        print(file.readlines())
+                        file.write(f"\n{user_id},True,True,True,True,True,True,True,True,True")
+                    with open("./data/AI/ai_progress.txt","r+") as file:
+                        print(file.readlines())
+                        file.write(f"\n{user_id},True,True,True,True,True,True,True,True,True")
                 except FileNotFoundError:
                     print("Make sure that all files are present in the data folder.")
         elif role == "Receptionist":
