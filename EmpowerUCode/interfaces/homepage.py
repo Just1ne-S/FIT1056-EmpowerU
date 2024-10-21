@@ -4,8 +4,8 @@ from app.Receptionist import Receptionist
 from app.User import User
 from interfaces.subject_selection import Selection
 from interfaces.recover_account import Recovery
-from interfaces.about_us_button import AboutUsButton
-from interfaces.about_us_content import AboutUs
+from interfaces.About_Us.about_us_button import AboutUsButton
+from interfaces.About_Us.about_us_content import AboutUs
 
 
 class HomePage(tk.Frame):
