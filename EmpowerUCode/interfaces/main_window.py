@@ -2,7 +2,7 @@ import tkinter as tk
 
 from interfaces.homepage import HomePage
 from interfaces.sign_up_page import SignUpPage
-from interfaces.about_us_button import AboutUsButton
+from interfaces.About_Us.about_us_button import AboutUsButton
 
 class MW(tk.Tk):
     
