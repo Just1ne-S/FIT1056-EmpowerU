@@ -1,0 +1,25 @@
+# 5. Computer Vision
+
+## - What is Computer Vision?
+Computer vision is a branch of AI that enables machines to interpret and understand visual data from the world, similar to human vision. 
+It involves tasks such as recognizing objects, detecting patterns, and extracting meaningful insights from images and videos.
+
+## - Key Techniques in Computer Vision
+Key techniques in computer vision include:
+- Image Classification: Assigning labels to images based on their content, such as "cat" or "car."
+- Object Detection: Identifying and locating specific objects within images or videos, crucial for applications like autonomous driving.
+- Image Segmentation: Dividing images into segments for detailed analysis, useful in medical imaging to isolate tumors.
+- Feature Extraction: Identifying important features like edges or textures for further analysis, such as facial recognition.
+- Optical Character Recognition (OCR): Converting images of text into editable and searchable formats, widely used in digitizing documents.
+- 3D Reconstruction: Creating 3D models from 2D images, essential for virtual and augmented reality applications.
+
+## - Applications in Industries
+Computer vision impacts various industries:
+- Healthcare: Assists in analyzing medical images for early disease detection.
+- Autonomous Vehicles: Enables self-driving cars to perceive their environment for safe navigation.
+- Security: Utilizes facial recognition and behavior analysis for enhanced surveillance.
+- Retail: Monitors inventory and analyzes customer behavior.
+- Agriculture: Helps in crop monitoring and health assessment.
+- Manufacturing: Automates quality control by inspecting products for defects.
+
+##The ongoing advancements in computer vision technology will continue to drive innovation and efficiency across multiple sectors.
