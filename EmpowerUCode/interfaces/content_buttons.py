@@ -1,7 +1,7 @@
 import tkinter as tk
 
 class ContentButton(tk.Frame):
-    def __init__(self,master,topic1,topic2,topic3,topic4,topic5,topic6,topic7,topic8):
+    def __init__(self,master,topic1,topic2,topic3,topic4,topic5,topic6,topic7,topic8,topic9):
         super().__init__(master=master)
         self.master = master
         self.topic_1 = tk.Button(master=self,text=topic1,width=30,height=5)
@@ -26,7 +26,10 @@ class ContentButton(tk.Frame):
         self.topic_7.grid(row=5,column=0,padx=10,pady=10,sticky=tk.E)
 
         self.topic_8 = tk.Button(master=self,text=topic8,width=30,height=5,state="disabled")
-        self.topic_8.grid(row=5,column=1,padx=10,pady=10,sticky=tk.E)
+        self.topic_8.grid(row=5,column=1,padx=10,pady=10,sticky=tk.W)
+
+        self.topic_9 = tk.Button(master=self,text=topic9,width=30,height=5,state="disabled")
+        self.topic_9.grid(row=6,column=0,padx=10,pady=10,sticky=tk.E)
 
     def show_buttons(self):
         self.place(relx=.7,rely=.5,anchor=tk.CENTER)
