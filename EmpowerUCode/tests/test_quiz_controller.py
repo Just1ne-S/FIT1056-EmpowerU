@@ -1,4 +1,6 @@
 import pytest
+import sys
+sys.path.append("..")
 from unittest.mock import patch
 from app.quiz_controller import QuizController
 
