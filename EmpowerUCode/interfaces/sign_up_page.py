@@ -1,5 +1,6 @@
 import tkinter as tk 
 import os 
+import pytest
 
 class SignUpPage(tk.Frame):
     def __init__(self, master):
@@ -97,39 +98,53 @@ class SignUpPage(tk.Frame):
 
         if not firstname or not lastname or not phonenumber or not username or not password or not confirm_password:
             self.alert_var.set("Error! All fields must be filled in.")
+            return False
         elif " " in firstname:
             self.alert_var.set("First name must not have any spaces.")
+            return False
         elif " " in lastname:
             self.alert_var.set("Last name must not have any spaces.")
+            return False
         elif " " in phonenumber:
             self.alert_var.set("Phone number must not have any spaces.") 
+            return False
         elif " " in username:
-            self.alert_var.set("Username must not have any spaces.")
+            self.alert_var.set("Username must not have any spaces.")    
+            return False
         elif " " in password:
             self.alert_var.set("Password must not have any spaces.")
+            return False
         elif firstname.isalpha() == False:
             self.alert_var.set("First name must be all letters.")
+            return False
         elif lastname.isalpha() == False:
             self.alert_var.set("Last name must be all letters.")
+            return False
         elif phonenumber.isdigit() == False:
             self.alert_var.set("Phone number must be all numbers.")
+            return False
         elif password != confirm_password:
             self.alert_var.set("Passwords do not match.")
+            return False
         elif self.assign == None:
             self.alert_var.set("Activation Code is Incorrect.")
+            return False
         elif self.username_taken(username,self.assign) == None:
             self.alert_var.set("Make sure that the login information file exists.")
+            return False
         elif self.username_taken(username,self.assign):
             self.alert_var.set("That username is taken.")
+            return False
         elif len(phonenumber) != 10 or phonenumber.isdigit() == False:
             self.alert_var.set("Invalid Phone number.")
+            return False
         else:
             self.signup_button.config(state="disabled")
             self.home_button.config(state="disabled")
-            self.code_remove(self.assign)
             self.new_user(firstname, lastname, phonenumber, username, password,self.assign,self.activation_code)
             self.alert_label.config(fg="green")
             self.timer()
+            return True
         
     def username_taken(self, username,role):
         if role == "User":
@@ -192,24 +207,6 @@ class SignUpPage(tk.Frame):
             self.assign = "Receptionist"
         else:
             self.assign = None
-
-    def code_remove(self,role):
-        if role == "User":
-            activation_code_user = open("./data/activation_code_user.txt","w")
-            for i in range(len(self.lines_user)):
-                if self.lines_user[i] == self.activation_code:
-                    self.lines_user.pop(i)
-                    for line in self.lines_user:
-                        activation_code_user.write(f"{line}\n")
-                    break
-        elif role == "Receptionist":
-            activation_code_receptionist = open("./data/activation_code_receptionist.txt","w")
-            for i in range(len(self.lines_receptionist)):
-                if self.lines_receptionist[i] == self.activation_code:
-                    self.lines_receptionist.pop(i)
-                    for line in self.lines_receptionist:
-                        activation_code_receptionist.write(f"{line}\n")
-                    break
 
         
     def new_user(self, firstname, lastname, phonenumber, username, password,role,code):
