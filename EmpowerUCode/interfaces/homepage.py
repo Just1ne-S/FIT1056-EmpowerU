@@ -6,6 +6,7 @@ from interfaces.subject_selection import Selection
 from interfaces.recover_account import Recovery
 from interfaces.About_Us.about_us_content import AboutUs
 from interfaces.Tips.Tips_content import TipsContent
+from interfaces.receptionist_homepage import ReceptionistHomepage
 
 
 class HomePage(tk.Frame):
@@ -96,6 +97,14 @@ class HomePage(tk.Frame):
         user_login = User.authenticate(self.username_var.get(), self.password_var.get(),self.path_2)
         if isinstance(receptionist_login,Receptionist):
             self.master.hide_homepage()
+            self.receptionist = ReceptionistHomepage(master = self.master,
+                                                     image_path_1="./images/Receptionist_details_logo.png",
+                                                     image_path_2="./images/User_database_logo.png",
+                                                     path_1 = "./data/receptionist_login_info.txt",
+                                                     path_2 = "./data/user_login_info.txt",
+                                                     receptionist = receptionist_login)
+            self.receptionist.selection_show()
+
         elif isinstance(user_login,User):   
             self.master.hide_homepage()
             self.selection = Selection(master=self.master,\
@@ -113,8 +122,8 @@ class HomePage(tk.Frame):
     
     def recover_account(self):
         self.master.hide_homepage()
-        recovery = Recovery(self.master)
-        recovery.show_recover()
+        self.recovery = Recovery(self.master)
+        self.recovery.show_recover()
 
         
 if __name__ == "__main__":
