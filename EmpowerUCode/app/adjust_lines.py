@@ -1,5 +1,5 @@
 def adjust_lines(path):
-    rf = open(path,"r")
-    line = rf.read().strip()
-    wf = open(path,"w")
-    wf.write(line)
+    with open(path, "r") as rf:
+        line = rf.read().strip()
+    with open(path, "w") as wf:
+        wf.write(line)
