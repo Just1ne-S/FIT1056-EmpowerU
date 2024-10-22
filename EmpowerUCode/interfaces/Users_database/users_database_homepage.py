@@ -28,42 +28,53 @@ class UsersDatabaseHP(tk.Frame):
             return users_list
 
     def user_database_table(self):
-        frame = tk.Frame(self)
-        frame.grid(row=1, padx=20, pady=20)
+        # Create a frame to hold the Treeview and Scrollbar
+            self.frame = tk.Frame(master=self.master)
 
-        columns = ("S_No.", "user_id", "Username", "First Name", "Last Name", "Contact No.")
+            # Define the columns for the Treeview
+            columns = ("S_No.", "user_id", "Username", "First Name", "Last Name", "Contact No.")
+            
+            # Create the Treeview widget
+            self.tree = ttk.Treeview(self.frame, columns=columns, show="headings")
 
-        self.tree = ttk.Treeview(self.master, columns=columns, show="headings")
+            # Configure the headings
+            self.tree.heading("S_No.", text="S_No.", anchor="w")
+            self.tree.heading("user_id", text="user_id", anchor="w")
+            self.tree.heading("Username", text="Username", anchor="w")
+            self.tree.heading("First Name", text="First Name", anchor="w")
+            self.tree.heading("Last Name", text="Last Name", anchor="w")
+            self.tree.heading("Contact No.", text="Contact No.", anchor="w")
 
-        self.tree.heading("S_No.", text="S_No.", anchor="w")
-        self.tree.heading("user_id", text="user_id", anchor="w")
-        self.tree.heading("Username", text="Username", anchor="w")
-        self.tree.heading("First Name", text="First Name", anchor="w")
-        self.tree.heading("Last Name", text="Last Name", anchor="w")
-        self.tree.heading("Contact No.", text="Contact No.", anchor="w")
+            # Configure the column widths
+            self.tree.column("S_No.", width=100, anchor="w")
+            self.tree.column("user_id", width=100, anchor="w")
+            self.tree.column("Username", width=200, anchor="w")
+            self.tree.column("First Name", width=200, anchor="w")
+            self.tree.column("Last Name", width=200, anchor="w")
+            self.tree.column("Contact No.", width=300, anchor="w")
 
-        self.tree.column("S_No.", width=100, anchor="w")
-        self.tree.column("user_id", width=100, anchor="w")
-        self.tree.column("Username", width=200, anchor="w")
-        self.tree.column("First Name", width=200, anchor="w")
-        self.tree.column("Last Name", width=200, anchor="w")
-        self.tree.column("Contact No.", width=300, anchor="w")
+            # Create a vertical scrollbar for the Treeview
+            self.scrollbar = ttk.Scrollbar(self.frame, orient="vertical", command=self.tree.yview)
+            self.tree.configure(yscroll=self.scrollbar.set)
 
-        scrollbar = ttk.Scrollbar(frame, orient="vertical", command=self.tree.yview)
-        self.tree.configure(yscroll=scrollbar.set)
+            # Pack the Treeview and Scrollbar
+            self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+            self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+            self.tree.pack()
+            # Add the frame to the master
+            self.frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+            # Insert user details into the Treeview
+            line_number = 1
+            for user_data in self.users_details():
+                self.tree.insert("", "end", values=(line_number, user_data[0], user_data[4], user_data[1], user_data[2], user_data[3]))
+                line_number += 1
 
-        line_number = 1
-        for user_data in self.users_details():
-            self.tree.insert("", "end", values=(line_number, user_data[0], user_data[4], user_data[1], user_data[2], user_data[3]))
-            self.tree.insert("", "end")
-            line_number += 1
+            # Apply the header style
+            self.apply_header_style()
 
-        self.apply_header_style()
+            
 
-        self.tree.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def apply_header_style(self):
         style = ttk.Style()
@@ -77,7 +88,7 @@ class UsersDatabaseHP(tk.Frame):
     def forget_homepage(self):
         self.place_forget()
         self.backbutton.forget_button()
-        self.tree.place_forget()
+        self.frame.place_forget()
 
     def back_selection(self):
         self.forget_homepage()
