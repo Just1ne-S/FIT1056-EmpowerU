@@ -3,19 +3,17 @@ from app.quiz_validator import QuizValidator
 
 
 class QuizController:
-    def __init__(self, quiz_file_path, is_interactive=False):
+    def __init__(self, quiz_file_path):
         """
         Initializes the QuizController with a path to the quiz file and mode (interactive/test-like).
         :param quiz_file_path: Path to the .txt quiz file
-        :param is_interactive: If True, the quiz is in interactive mode with hints; otherwise, it's a test-like mode.
         """
         self.quiz_data = parse_quiz_file(quiz_file_path)
-        self.is_interactive = is_interactive  # If True, hints are shown and retries are allowed
         self.current_question_index = 0
         self.user_score = 0
         self.total_questions = len(self.quiz_data)
         self.hint_indices = [0] * self.total_questions  # Store hint indices for each question
-        self.attempts_remaining = 1 if not is_interactive else float('inf')  # One attempt for test mode
+        self.attempts_remaining = 1
 
 
     def get_current_question(self):
@@ -46,7 +44,7 @@ class QuizController:
             correct = False
 
         # Provide progressive hint if incorrect and interactive
-        if not correct and self.is_interactive:
+        if not correct:
             hint = self.get_progressive_hint()
         else:
             hint = ""

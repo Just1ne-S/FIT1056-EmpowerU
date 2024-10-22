@@ -41,6 +41,7 @@ Implement a function in Python that returns either 0 or 1 to simulate binary cla
 import random
 def predict():
     return random.randint(0, 1)
+
 """
 ###HINT
 Use the random module in Python to simulate a random outcome, The function should return a random integer, You can use `random.randint(0, 1)` to return a binary result (0 or 1).

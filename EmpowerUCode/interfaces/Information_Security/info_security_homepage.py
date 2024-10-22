@@ -4,7 +4,7 @@ from interfaces.content_buttons import ContentButton
 from interfaces.back_button import BackButton
 from interfaces.display_label import DisplayLabel
 from interfaces.Information_Security.info_security_content import InfoSecurityContent
-from app.quiz_ui import QuizUI
+from interfaces.quiz_ui import QuizUI
 
 class InfoSecurityHP(tk.Frame):
     def __init__(self,master,master_previous,user):
@@ -73,7 +73,7 @@ your skills and enhance your knowledge!"
                 ,directory=None,role="Text",rel_x=.2,rel_y=.7,font=("Arial Bold",12))  
         self.content_buttons.topic_9.config(command=self.check_ninth_button)
         
-        self.quiz_ui = QuizUI(master=self.master,master_previous=self,back_button_text="Back to Information Security Homepage",quiz_file_path="./data/quizzes/infosec_quiz.txt",is_interactive=True)
+        self.quiz_ui = QuizUI(master=self.master,master_previous=self,back_button_text="Back to Information Security Homepage",quiz_file_path="./data/quizzes/infosec_quiz.txt")
                 
     def activate_button(self,index):
         self.button_list[index].config(state="normal")
@@ -108,7 +108,7 @@ your skills and enhance your knowledge!"
         except FileNotFoundError:
             print("Make sure that all files are present in the data folder.")
         try:
-            self.quiz_ui = QuizUI(master=self.master,master_previous=self,back_button_text="Back to Information Security Homepage",quiz_file_path="./data/quizzes/infosec_quiz.txt",is_interactive=True)
+            self.quiz_ui = QuizUI(master=self.master,master_previous=self,back_button_text="Back to Information Security Homepage",quiz_file_path="./data/quizzes/infosec_quiz.txt")
             self.quiz_ui.place_frame()
             self.quiz_ui.back_button(rel_x=.118,rel_y=.95)
             self.forget_homepage()
