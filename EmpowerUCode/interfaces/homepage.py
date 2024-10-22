@@ -104,6 +104,9 @@ class HomePage(tk.Frame):
                                                      path_2 = "./data/user_login_info.txt",
                                                      receptionist = receptionist_login)
             self.receptionist.selection_show()
+            self.username_entry.delete(0,tk.END)
+            self.password_entry.delete(0,tk.END)
+            return True
 
         elif isinstance(user_login,User):   
             self.master.hide_homepage()
@@ -114,11 +117,16 @@ class HomePage(tk.Frame):
                                        user=user_login)
             self.selection.selection_show()
             self.alert_var.set("")
+            self.username_entry.delete(0,tk.END)
+            self.password_entry.delete(0,tk.END)
+            return True
         else:
             self.alert_var.set("Login unsuccessful.")
+            self.username_entry.delete(0,tk.END)
+            self.password_entry.delete(0,tk.END)
+            return False
 
-        self.username_entry.delete(0,tk.END)
-        self.password_entry.delete(0,tk.END)
+        
     
     def recover_account(self):
         self.master.hide_homepage()
