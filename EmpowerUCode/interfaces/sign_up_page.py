@@ -1,6 +1,5 @@
 import tkinter as tk 
 import os 
-import pytest
 
 class SignUpPage(tk.Frame):
     def __init__(self, master):
@@ -129,10 +128,10 @@ class SignUpPage(tk.Frame):
         elif self.assign == None:
             self.alert_var.set("Activation Code is Incorrect.")
             return False
-        elif self.username_taken(username,self.assign) == None:
+        elif self.username_taken(username) == None:
             self.alert_var.set("Make sure that the login information file exists.")
             return False
-        elif self.username_taken(username,self.assign):
+        elif self.username_taken(username):
             self.alert_var.set("That username is taken.")
             return False
         elif len(phonenumber) != 10 or phonenumber.isdigit() == False:
@@ -146,8 +145,7 @@ class SignUpPage(tk.Frame):
             self.timer()
             return True
         
-    def username_taken(self, username,role):
-        if role == "User":
+    def username_taken(self, username):
             if os.path.exists(self.path_1):
                 with open(self.path_1, "r") as file:
                     for line in file:
@@ -156,8 +154,6 @@ class SignUpPage(tk.Frame):
                             return True
             else:
                 return None
-            return False 
-        elif role == "Receptionist":
             if os.path.exists(self.path_2):
                 with open(self.path_2, "r") as file:
                     for line in file:
