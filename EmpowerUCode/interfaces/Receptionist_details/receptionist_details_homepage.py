@@ -49,6 +49,13 @@ class ReceptionistDetailsHP(tk.Frame):
 
         self.apply_header_style()
 
+        self.label_frame = tk.Frame(master=self.master)
+
+        text = "This page shows receptionists details and credentials, such as their user_id, username, first name, last name, contact number, password and activation code."
+        self.label = tk.Label(master=self.label_frame,text=text,font=("Arial",13),wraplength=400)
+        self.label.pack()
+
+        self.label_frame.place(relx=.5,rely=.82,anchor=tk.CENTER)
 
         self.tree.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
@@ -73,6 +80,7 @@ class ReceptionistDetailsHP(tk.Frame):
         self.place_forget()
         self.backbutton.forget_button()
         self.tree.place_forget()
+        self.label_frame.place_forget()
 
     def back_selection(self):
         self.forget_homepage()

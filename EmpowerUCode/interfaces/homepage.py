@@ -98,7 +98,7 @@ class HomePage(tk.Frame):
         if isinstance(receptionist_login,Receptionist):
             self.master.hide_homepage()
             self.receptionist = ReceptionistHomepage(master = self.master,
-                                                     image_path_1="./images/Receptionist_details_logo.png",
+                                                     image_path_1="./images/Admin_details_logo.png",
                                                      image_path_2="./images/User_database_logo.png",
                                                      path_1 = "./data/receptionist_login_info.txt",
                                                      path_2 = "./data/user_login_info.txt",

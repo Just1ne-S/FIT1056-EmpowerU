@@ -17,7 +17,7 @@ class ReceptionistHomepage(tk.Frame):
         self.title.grid(columnspan = 3, row = 0, padx = 20, pady = 10)
 
         # Description
-        description="This is the reception interface.\nYou as a receptionist are authorized to view the details of all users that uses EmpowerU."
+        description="This is the admin/reception interface.\nYou as a admin/receptionist are authorized to view the details of all users that uses EmpowerU."
         self.description_label = tk.Label(self, text=description, wraplength=400.,font=("Arial",13))
         self.description_label.grid(columnspan = 3, row = 2, padx = 20, pady = 10)
 
