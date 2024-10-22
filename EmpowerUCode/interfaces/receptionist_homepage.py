@@ -17,8 +17,8 @@ class ReceptionistHomepage(tk.Frame):
         self.title.grid(columnspan = 3, row = 0, padx = 20, pady = 10)
 
         # Description
-        description="This is the reception interface.\nYou as a receptionist are authorized to view the details of all users that uses EmpowerU"
-        self.description_label = tk.Label(self, text=description, wraplength=300)
+        description="This is the reception interface.\nYou as a receptionist are authorized to view the details of all users that uses EmpowerU."
+        self.description_label = tk.Label(self, text=description, wraplength=400.,font=("Arial",13))
         self.description_label.grid(columnspan = 3, row = 2, padx = 20, pady = 10)
 
         # First button
@@ -33,8 +33,8 @@ class ReceptionistHomepage(tk.Frame):
 
         # Log out button
         self.logout_btn = tk.Button(self,text="Log out",font=("Arial",12),command=self.logout,width=10)
-        self.logout_btn.grid(column=1,row=2,padx=20,pady=10)
-    
+        self.logout_btn.grid(row=3,columnspan=2,padx=20,pady=10)
+
     def selection_show(self):
         self.place(relx=.5, rely=.5,anchor=tk.CENTER)
     
