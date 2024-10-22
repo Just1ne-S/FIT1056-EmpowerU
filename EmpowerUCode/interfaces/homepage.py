@@ -96,6 +96,14 @@ class HomePage(tk.Frame):
         user_login = User.authenticate(self.username_var.get(), self.password_var.get(),self.path_2)
         if isinstance(receptionist_login,Receptionist):
             self.master.hide_homepage()
+            self.receptionist = ReceptionistHomepage(master = self.master,
+                                                     image_path_1="./images/Receptionist Details logo.png",
+                                                     image_path_2="./images/AboutUs.png",
+                                                     path_1 = "./data/receptionist_login_info.txt",
+                                                     path_2 = "./data/user_login_info.txt",
+                                                     receptionist = receptionist_login)
+            self.receptionist.selection_show()
+
         elif isinstance(user_login,User):   
             self.master.hide_homepage()
             self.selection = Selection(master=self.master,\
