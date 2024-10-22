@@ -10,7 +10,7 @@ class UsersDatabaseHP(tk.Frame):
         self.master = master
         self.master_previous = master_previous
 
-        self.title = tk.Label(self,text="User Database",font=("Arial Bold",70,"underline"))
+        self.title = tk.Label(self,text="User Database",font=("Arial Bold",30,"underline"))
         self.title.grid(columnspan = 3, row = 0, padx = 20, pady = 20, sticky="n")
 
         self.user_database_table()
