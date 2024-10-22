@@ -64,6 +64,15 @@ class UsersDatabaseHP(tk.Frame):
             # Add the frame to the master
             self.frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
+            self.label_frame = tk.Frame(master=self.master)
+
+            text = "This page is used to view user details, that includes their user_id, first name, last name, username and contact number."
+
+            self.label = tk.Label(master=self.label_frame,text=text,font=("Arial",13),wraplength=400)
+            self.label.pack()
+
+            self.label_frame.place(relx=.5,rely=.7,anchor=tk.CENTER)
+
             # Insert user details into the Treeview
             line_number = 1
             for user_data in self.users_details():
@@ -89,6 +98,7 @@ class UsersDatabaseHP(tk.Frame):
         self.place_forget()
         self.backbutton.forget_button()
         self.frame.place_forget()
+        self.label_frame.place_forget()
 
     def back_selection(self):
         self.forget_homepage()
