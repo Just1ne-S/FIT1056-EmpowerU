@@ -87,28 +87,38 @@ class Recovery(tk.Frame):
 
         if not firstname or not lastname or not username or not confirm_pass or not new_pass or not code:
             self.alert_var.set("Error! All fields must be filled in.")
+            return False
         elif " " in firstname:
             self.alert_var.set("First name must not have any spaces.")
+            return False
         elif " " in lastname:
             self.alert_var.set("Last name must not have any spaces.")
+            return False
         elif " " in username:
             self.alert_var.set("Username must not have any spaces.")
+            return False
         elif " " in new_pass:
             self.alert_var.set("Password must not have any spaces.")
+            return False
         elif firstname.isalpha() == False:
             self.alert_var.set("First name must be all letters.")
+            return False
         elif lastname.isalpha() == False:
             self.alert_var.set("Last name must be all letters.")
+            return False
         elif new_pass != confirm_pass:
             self.alert_var.set("Passwords do not match.")
+            return False
         elif self.assign == None:
             self.alert_var.set("Information is Incorrect.")
+            return False
         else:
             self.recover_button.config(state="disabled")  
             self.home_button.config(state="disabled")  
             self.replace_info(lines,self.assign)
             self.alert_label.config(fg="green")
             self.timer()
+            return True
 
     def assign_role(self,firstname,lastname,username_input,new_pass,code):
         login_info_user = open("./data/user_login_info.txt","r")
@@ -127,6 +137,7 @@ class Recovery(tk.Frame):
                 self.assign = "Receptionist"
                 lines_user[index] = f"{user_id},{first_name},{last_name},{contact_num},{username},{new_pass},{code}\n"
                 return lines_receptionist
+        self.assign = None
             
         
     def replace_info(self,lines,role):
