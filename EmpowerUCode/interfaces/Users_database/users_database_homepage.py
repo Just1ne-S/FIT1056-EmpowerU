@@ -82,9 +82,6 @@ class UsersDatabaseHP(tk.Frame):
             # Apply the header style
             self.apply_header_style()
 
-            
-
-
     def apply_header_style(self):
         style = ttk.Style()
         style.configure("Treeview.Heading",font=("Arial", 16, "bold")) 
