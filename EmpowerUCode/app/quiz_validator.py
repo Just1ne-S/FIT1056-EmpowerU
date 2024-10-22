@@ -36,12 +36,3 @@ class QuizValidator:
         user_order_list = [x.strip() for x in user_order.split(",")]
         correct_order_list = [x.strip() for x in correct_order.split(",")]
         return user_order_list == correct_order_list
-
-    @staticmethod
-    def provide_hint(question_data):
-        """
-        Provide a hint based on the question type.
-        :param question_data: Dictionary containing question information (including the 'Hint' field)
-        :return: The relevant hint if available, otherwise a default message
-        """
-        return question_data.get('Hint', "No hint available.")

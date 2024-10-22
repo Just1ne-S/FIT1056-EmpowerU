@@ -1,22 +1,18 @@
-import sys
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-sys.path.append("/Users/krishnaagarwal/Desktop/FIT1056-EmpowerU/EmpowerUCode/app")
-from quiz_controller import QuizController
+from app.quiz_controller import QuizController
+from interfaces.back_button import BackButton
 
+class QuizUI(tk.Frame):
+    def __init__(self,master,master_previous,back_button_text,quiz_file_path):
+        super().__init__(master=master)
+        self.master_previous = master_previous
 
-class QuizUI(tk.Tk):
-    def __init__(self, quiz_file_path, is_interactive=True):
-        super().__init__()
+        self.quiz_controller = QuizController(quiz_file_path)
 
-        # print(f"Debug: QuizUI initialized with is_interactive = {is_interactive}")
-
-        self.title("Quiz Application")
-        self.geometry("800x600")
-
-        # Initialize the QuizController with the is_interactive flag
-        self.quiz_controller = QuizController(quiz_file_path, is_interactive=is_interactive)
+        self.back_button_quiz = BackButton(master=self.master,master_previous=self,text_input=back_button_text)
+        self.back_button_quiz.back_button.config(command=self.back_to_homepage)
 
         # Create the frame for the quiz
         self.content_frame = tk.Frame(self)
@@ -68,7 +64,7 @@ class QuizUI(tk.Tk):
         self.instructions_label.config(text=instructions)
 
         self.question_label.config(text=current_question["Q"])
-        self.hint_label.config(text="")  # Clear previous hint
+        self.hint_label.config(text="")
 
         # Clear previous widgets
         for widget in self.mcq_frame.winfo_children():
@@ -76,7 +72,6 @@ class QuizUI(tk.Tk):
         self.coding_textarea.pack_forget()
         self.drag_and_drop_listbox.pack_forget()
 
-        # Display question based on the type
         question_type = current_question['Type']
 
         if question_type == 'mcq':
@@ -153,10 +148,6 @@ class QuizUI(tk.Tk):
         # Validate the answer
         correct, hint = self.quiz_controller.validate_answer(user_answer, question_type)
 
-        # # Debugging print statements
-        # print(f"Debug: Answer submitted - {user_answer}")
-        # print(f"Debug: Hint - {hint}")
-        # print(f"Debug: is_interactive = {self.quiz_controller.is_interactive}")
 
         # Provide feedback to the user
         if correct:
@@ -167,10 +158,25 @@ class QuizUI(tk.Tk):
         else:
             messagebox.showerror("Incorrect", "Incorrect!")
             # Display the next progressive hint if in interactive mode
-            if self.quiz_controller.is_interactive and hint:
+            if hint:
                 self.hint_label.config(text=f"Hint: {hint}")
-            else:
-                self.hint_label.config(text="No hints available in test mode.")
+
+    def back_button(self,rel_x,rel_y=.95):
+        self.back_button_quiz.place(relx=rel_x,rely=rel_y,anchor=tk.CENTER)
+
+    def hide_button_homepage(self):
+        self.back_button_quiz.forget_button()
+
+    def back_to_homepage(self):
+        self.place_forget()
+        self.hide_button_homepage()
+        self.master_previous.show_homepage()
+
+    def place_frame(self):
+        self.place(relx=.5,rely=.5,anchor=tk.CENTER)
+
+    def forget_frame(self):
+        self.place_forget()
 
     def finish_quiz(self):
         """
@@ -179,13 +185,11 @@ class QuizUI(tk.Tk):
         final_score, total_questions = self.quiz_controller.get_final_score()
         messagebox.showinfo("Quiz Completed", f"Your final score: {final_score}/{total_questions}")
         self.quiz_controller.reset_quiz()
-        self.destroy()
+        self.hide_button_homepage()
+        self.forget_frame()
+        self.master_previous.show_homepage()
 
 
 # Running the GUI-based quiz
 if __name__ == "__main__":
-    quiz_file_path = "/Users/krishnaagarwal/Documents/FIT1056-EmpowerU/EmpowerU/data/quizzes/ai_quiz.txt"  # Replace with your actual quiz file path
-
-    # Set is_interactive to True or False depending on the mode you want
-    app = QuizUI(quiz_file_path, is_interactive=True)
-    app.mainloop()
+    pass
