@@ -1,11 +1,10 @@
 import pytest
 import tkinter as tk
 from interfaces.main_window import MW
+from app.compiled_adjust_lines import compiled_adjust_lines
 
+compiled_adjust_lines()
 root = MW(title="EmpowerU - Learning Application",width="1200",height="840")
-
-
-
 
 def sign_up_test(firstname, lastname, phonenumber, username, password, confirm_password, code):
     root.sign_up_page.firstname_var.set(firstname)
