@@ -1,7 +1,9 @@
 import pytest 
 import tkinter as tk 
 from interfaces.main_window import MW
+from app.compiled_adjust_lines import compiled_adjust_lines
 
+compiled_adjust_lines()
 root = MW(title="EmpowerU - Learning Application", width="1200", height="840")
 
 def login_test(username, password):
