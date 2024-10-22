@@ -113,8 +113,8 @@ class HomePage(tk.Frame):
     
     def recover_account(self):
         self.master.hide_homepage()
-        recovery = Recovery(self.master)
-        recovery.show_recover()
+        self.recovery = Recovery(self.master)
+        self.recovery.show_recover()
 
         
 if __name__ == "__main__":
