@@ -3,6 +3,7 @@ import tkinter as tk
 from interfaces.main_window import MW
 from app.compiled_adjust_lines import compiled_adjust_lines
 
+compiled_adjust_lines()
 root = MW(title="EmpowerU - Learning Application",width="1200",height="840")
 homepage = root.homepage
 homepage.recover_account()
@@ -18,8 +19,6 @@ def recover_test(firstname, lastname, username, password, confirm_password, code
     homepage.recovery.activate_var.set(code)
     # Return the result of the sign_up method
     return homepage.recovery.recover_account()
-
-import pytest
 
 # Data used for the existing account: Justin, Siananda, justin, justin123, gif1
 
