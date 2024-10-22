@@ -1,4 +1,6 @@
 import pytest
+import sys
+sys.path.append("../app")
 from quiz_validator import QuizValidator
 
 
