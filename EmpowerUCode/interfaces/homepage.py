@@ -6,6 +6,7 @@ from interfaces.subject_selection import Selection
 from interfaces.recover_account import Recovery
 from interfaces.About_Us.about_us_content import AboutUs
 from interfaces.Tips.Tips_content import TipsContent
+from interfaces.receptionist_homepage import ReceptionistHomepage
 
 
 class HomePage(tk.Frame):
